@@ -3,3 +3,4 @@
 S3method(lm,data.frame)
 S3method(lm,default)
 export(lm)
+export(unpack_formula)
