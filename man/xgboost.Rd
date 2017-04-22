@@ -2,24 +2,26 @@
 % Please edit documentation in R/xgboost.R
 \name{xgboost}
 \alias{xgboost}
-\title{data.frame-first formula-second method for xgboost::xgboost}
+\title{data.frame-first formula-second method for \code{\link[xgboost]{xgboost}}}
 \usage{
 xgboost(data, formula, ...)
 }
 \arguments{
 \item{data}{Data frame containing the variables in the model.}
 
-\item{formula}{A formula of the form \code{label ~ feature_1 + feature_2 +
-... + feature_i}}
+\item{formula}{A formula of the form \code{y ~ x1 + x2 + ... + xi}}
 
 \item{...}{additional arguments to pass to \code{\link[xgboost]{xgboost}}()}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to
-\code{\link[xgboost]{xgboost}}().
+\code{\link[xgboost]{xgboost}}.
 }
 \examples{
 xgboost(mtcars, hp ~ ., nrounds = 10)
+
+# Help page for function being twiddled
+?xgboost::xgboost
 }
 \seealso{
 \code{\link[xgboost]{xgboost}}
