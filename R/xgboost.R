@@ -25,15 +25,6 @@ xgboost.default <- function(data, formula, ...) {
 
 #' @export
 xgboost.data.frame <- function(data, formula, ...) {
-  # Extract variables
-  vars <- unpack_formula(formula)
-  if (identical(vars$rhs, '.'))
-    vars$rhs <- names(data)[names(data) != vars$lhs]
-  vars$rhs <- vars$rhs[vars$rhs != "+"]
-
-  # Convert data frame to input matrix and label vector
-  X <- data.matrix(data[, vars$rhs])
-  y <- data[[vars$lhs]]
-
-  xgboost::xgboost(data = X, label = y, ...)
+  dat <- unpack_data(data, formula)
+  xgboost::xgboost(data = dat$X, label = dat$y, ...)
 }
