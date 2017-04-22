@@ -1,9 +1,17 @@
 Package: twidlr
-Title: What the Package Does (one line, title case)
+Title: data.frame-first formula-second modelling functions
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: c(
+  person("Simon", "Jackson", email = "drsimonjackson@gmail.com", role = c("aut", "cre"))
+  )
+Description: twidlr is an R package that exposes
+  data.frame-first formula-second versions of modelling functions.
 Depends: R (>= 3.3.1)
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/drsimonj/twidlr
+BugReports: https://github.com/drsimonj/twidlr/issues
+RoxygenNote: 6.0.1
+Imports:
+  lazyeval (>= 0.2.0)
