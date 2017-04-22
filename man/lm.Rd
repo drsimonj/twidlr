@@ -6,7 +6,24 @@
 \usage{
 lm(data, formula, ...)
 }
+\arguments{
+\item{data}{Data frame containing the variables in the model.}
+
+\item{formula}{an object of class \code{"\link{formula}"} (or one that
+    can be coerced to that class): a symbolic description of the
+    model to be fitted.  The details of model specification are given
+    under \sQuote{Details}.}
+
+\item{...}{additional arguments to pass to \code{\link[stats]{lm}}()}
+}
 \description{
 This function passes a data.frame, formula, and additional arguments to
 \code{\link[stats]{lm}}().
+}
+\examples{
+fit <- lm(mtcars, hp ~ .)
+summary(fit)
+}
+\seealso{
+\code{\link[stats]{lm}}
 }
