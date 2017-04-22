@@ -3,3 +3,5 @@
 twidlr is an R package that exposes data.frame-first, formula-second, versions of modelling functions. All modelling functions exposed by twidlr are of the following format:
 
 > model\_function(data = data.frame, formula = y ~ ...)
+
+twidlr gets its name from the "tilde", often called a "twiddle", used in R formulas.
