@@ -22,3 +22,34 @@ unpack_formula <- function(f) {
   rhs <- as.character(lazyeval::f_rhs(f))
   list(lhs = lhs, rhs = rhs)
 }
+
+#' Convert a data frame and formula to input matrix and output vector
+#'
+#' Convert a data frame and formula of the form "\code{output ~ feature_1 +
+#' feature_2 + ... + feature_i}" to a list containing all input variables as a
+#' matrix and the output variable as a vector. These structures are commonly
+#' used by various modelling functions such as \code{\link[glmnet]{glmnet}}
+#'
+#' @param data A data frame
+#' @param f A formula of the form \code{output ~ feature_1 + feature_2 + ... + feature_i}
+#'
+#' @return Two-element list containing output values as a vector named \code{y}
+#'   and an input matrix called \code{X}
+#'
+#' @export
+#'
+#' @examples
+#' unpack_data(mtcars, hp ~ .)
+unpack_data <- function(data, f) {
+  # Extract variables
+  vars <- unpack_formula(f)
+  if (identical(vars$rhs, '.'))
+    vars$rhs <- names(data)[names(data) != vars$lhs]
+  vars$rhs <- vars$rhs[vars$rhs != "+"]
+
+  # Convert data frame to input matrix and label vector
+  X <- data.matrix(data[, vars$rhs])
+  y <- data[[vars$lhs]]
+
+  list(y = y, X = X)
+}

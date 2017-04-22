@@ -2,7 +2,7 @@
 % Please edit documentation in R/lm.R
 \name{lm}
 \alias{lm}
-\title{data.frame-first formula-second method of stats::lm}
+\title{data.frame-first formula-second method for stats::lm}
 \usage{
 lm(data, formula, ...)
 }
