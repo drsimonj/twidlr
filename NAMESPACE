@@ -2,5 +2,8 @@
 
 S3method(lm,data.frame)
 S3method(lm,default)
+S3method(xgboost,data.frame)
+S3method(xgboost,default)
 export(lm)
 export(unpack_formula)
+export(xgboost)
