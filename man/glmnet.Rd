@@ -2,15 +2,14 @@
 % Please edit documentation in R/glmnet.R
 \name{glmnet}
 \alias{glmnet}
-\title{data.frame-first formula-second method for glmnet::glmnet}
+\title{data.frame-first formula-second method for \code{\link[glmnet]{glmnet}}}
 \usage{
 glmnet(data, formula, ...)
 }
 \arguments{
 \item{data}{Data frame containing the variables in the model.}
 
-\item{formula}{A formula of the form \code{label ~ feature_1 + feature_2 +
-... + feature_i}}
+\item{formula}{A formula of the form \code{y ~ x1 + x2 + ... + xi}}
 
 \item{...}{additional arguments to pass to \code{\link[glmnet]{glmnet}}()}
 }
@@ -20,6 +19,9 @@ This function passes a data.frame, formula, and additional arguments to
 }
 \examples{
 glmnet(mtcars, hp ~ .)
+
+# Help page for function being twiddled
+?glmnet::glmnet
 }
 \seealso{
 \code{\link[glmnet]{glmnet}}

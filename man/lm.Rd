@@ -2,7 +2,7 @@
 % Please edit documentation in R/lm.R
 \name{lm}
 \alias{lm}
-\title{data.frame-first formula-second method for stats::lm}
+\title{data.frame-first formula-second method for \code{\link[stats]{lm}}}
 \usage{
 lm(data, formula, ...)
 }
@@ -14,15 +14,18 @@ lm(data, formula, ...)
     model to be fitted.  The details of model specification are given
     under \sQuote{Details}.}
 
-\item{...}{additional arguments to pass to \code{\link[stats]{lm}}()}
+\item{...}{additional arguments to pass to \code{\link[stats]{lm}}}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to
-\code{\link[stats]{lm}}().
+\code{\link[stats]{lm}}.
 }
 \examples{
 fit <- lm(mtcars, hp ~ .)
 summary(fit)
+
+# Help page for function being twiddled
+?stats::lm
 }
 \seealso{
 \code{\link[stats]{lm}}
