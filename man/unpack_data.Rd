@@ -9,18 +9,20 @@ unpack_data(data, f)
 \arguments{
 \item{data}{A data frame}
 
-\item{f}{A formula of the form \code{output ~ feature_1 + feature_2 + ... + feature_i}}
+\item{formula}{A formula of the form \code{y ~ x1 + x2 + ... + xi}}
 }
 \value{
 Two-element list containing output values as a vector named \code{y}
   and an input matrix called \code{X}
 }
 \description{
-Convert a data frame and formula of the form "\code{output ~ feature_1 +
-feature_2 + ... + feature_i}" to a list containing all input variables as a
-matrix and the output variable as a vector. These structures are commonly
-used by various modelling functions such as \code{\link[glmnet]{glmnet}}
+Convert a data frame and formula of the form "\code{y ~ x1 + x2 + ... + xi}"
+to a list containing all input variables as a matrix and the output variable
+as a vector. These structures are commonly used by various modelling
+functions such as \code{\link[glmnet]{glmnet}}
 }
 \examples{
+unpack_data(mtcars, hp ~ mpg + wt + disp)
 unpack_data(mtcars, hp ~ .)
+unpack_data(mtcars, ~ .)
 }
