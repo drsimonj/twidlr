@@ -27,6 +27,6 @@ glmnet.default <- function(data, formula, ...) {
 
 #' @export
 glmnet.data.frame <- function(data, formula, ...) {
-  dat <- unpack_data(data, formula)
-  glmnet::glmnet(x = dat$X, y = dat$y, ...)
+  dat <- model_as_xy(data, formula)
+  glmnet::glmnet(x = dat$x, y = dat$y, ...)
 }

@@ -27,6 +27,6 @@ xgboost.default <- function(data, formula, ...) {
 
 #' @export
 xgboost.data.frame <- function(data, formula, ...) {
-  dat <- unpack_data(data, formula)
-  xgboost::xgboost(data = dat$X, label = dat$y, ...)
+  dat <- model_as_xy(data, formula)
+  xgboost::xgboost(data = dat$x, label = dat$y, ...)
 }

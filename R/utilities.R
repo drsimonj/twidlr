@@ -1,69 +1,38 @@
-#' Convert formula into a character list
+#' Convert data frame and model \code{\link[stats]{formula}} to input matrix and
+#' output vector list
 #'
-#' Convert a formula of the form \code{y ~ x} into a two-element list containing
-#' the lefthand and righthand sides of the formula as character vectors
+#' Convert a data frame and model \code{\link[stats]{formula}} to a list
+#' containing the input variables as a matrix \code{x} and the output variable
+#' as a vector \code{y}. These structures are commonly used by various modelling
+#' functions such as \code{\link[glmnet]{glmnet}}.
 #'
-#' @param f A formula
-#'
-#' @seealso \code{\link[lazyeval]{f_lhs}}
-#'
-#' @return Two-element list of character vectors corresponding to the lefthand
-#'   and righthand sides of the formula
-#'
-#' @export
-#'
-#' @examples
-#' unpack_formula(y ~ x)
-#' unpack_formula(y ~ x1 + x2)
-#' unpack_formula(y ~ .)
-#' unpack_formula(~ "x")
-unpack_formula <- function(f) {
-  if (!is(f, "formula"))
-    stop("Please provide a formula object such as `y ~ x`")
-
-  lhs <- c()
-  rhs <- all.vars(f[[2]])
-  if(length(f) == 3) {
-    lhs <- rhs
-    rhs <- all.vars(f[[3]])
-  }
-
-  list(lhs = lhs, rhs = rhs)
-}
-
-#' Convert a data frame and formula to input matrix and output vector
-#'
-#' Convert a data frame and formula of the form "\code{y ~ x1 + x2 + ... + xi}"
-#' to a list containing all input variables as a matrix and the output variable
-#' as a vector. These structures are commonly used by various modelling
-#' functions such as \code{\link[glmnet]{glmnet}}
+#' All operators made available by \code{\link[stats]{formula}} are allowed.
 #'
 #' @param data A data frame
-#' @param formula A formula of the form \code{y ~ x1 + x2 + ... + xi}
+#' @param formula A \code{\link[stats]{formula}}
 #'
-#' @return Two-element list containing output values as a vector named \code{y}
-#'   and an input matrix called \code{X}
+#' @return Two-element list containing output values as a named-vector \code{y}
+#'   and an input matrix named \code{X}
 #'
 #' @export
 #'
+#' @seealso \code{\link[stats]{formula}}
+#'
 #' @examples
-#' unpack_data(mtcars, hp ~ mpg + wt + disp)
-#' unpack_data(mtcars, hp ~ .)
-#' unpack_data(mtcars, ~ .)
-unpack_data <- function(data, f) {
-  # Extract variables
-  v <- unpack_formula(f)
-  if (identical(v$rhs, '.')) {
-    v$rhs <- names(data)
-    if (!is.null(v$lhs))
-      v$rhs <- v$rhs[v$rhs != v$lhs]
-  }
+#' model_as_xy(mtcars, hp ~ mpg)
+#' model_as_xy(mtcars, hp ~ .)
+#' model_as_xy(mtcars, hp ~ mpg * hp)
+#' model_as_xy(mtcars, ~ .)
+model_as_xy <- function(data, formula) {
+
+  if (!is(data, "data.frame") | !is(formula, "formula"))
+    stop("Please provide a data frame and formula (see ?stats::formula)")
 
   # Convert data frame to input matrix and label vector
   y <- NULL
-  if (!is.null(v$lhs))
-    y <- data[[v$lhs]]
-  X <- data.matrix(data[v$rhs])
+  if (length(formula) == 3)
+    y <- data[[as.character(formula[[2L]])]]
+  x <- stats::model.matrix(object = formula, data = data)[,-1]
 
-  list(y = y, X = X)
+  list(x = x, y = y)
 }
