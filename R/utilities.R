@@ -11,8 +11,8 @@
 #' @param data A data frame
 #' @param formula A \code{\link[stats]{formula}}
 #'
-#' @return Two-element list containing output values as a named-vector \code{y}
-#'   and an input matrix named \code{X}
+#' @return Two-element list containing input variables as a matrix \code{x}, and
+#'   output variable as a vector \code{y}
 #'
 #' @export
 #'
