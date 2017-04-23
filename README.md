@@ -1,6 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<font size="64">~</font>
+twidlr: data.frame-first formula-second modelling <img src="man/figures/logo.png" align="right" />
+==================================================================================================
 
 Overview
 --------
