@@ -5,7 +5,7 @@
 #'
 #' @seealso \code{\link[stats]{glm}}
 #'
-#' @param data Data frame containing the variables in the model.
+#' @param data Data frame containing the variables in the model
 #' @inheritParams stats::glm
 #' @param ... additional arguments to pass to \code{\link[stats]{glm}}
 #'

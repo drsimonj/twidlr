@@ -7,7 +7,7 @@
 glm(data, formula, ...)
 }
 \arguments{
-\item{data}{Data frame containing the variables in the model.}
+\item{data}{Data frame containing the variables in the model}
 
 \item{formula}{an object of class \code{"\link{formula}"} (or one that
     can be coerced to that class): a symbolic description of the
