@@ -17,7 +17,7 @@
 #' # Help page for function being twiddled
 #' ?lme4::lmer
 lmer <- function(data, formula, ...) {
-  UseMethod("lm")
+  UseMethod("lmer")
 }
 
 #' @export
