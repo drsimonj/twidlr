@@ -9,12 +9,9 @@ glm(data, formula, ...)
 \arguments{
 \item{data}{Data frame containing the variables in the model}
 
-\item{formula}{an object of class \code{"\link{formula}"} (or one that
-    can be coerced to that class): a symbolic description of the
-    model to be fitted.  The details of model specification are given
-    under \sQuote{Details}.}
+\item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
 
-\item{...}{additional arguments to pass to \code{\link[stats]{glm}}}
+\item{...}{additional arguments to pass to model function}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to

@@ -5,16 +5,11 @@
 #'
 #' @seealso \code{\link[rpart]{rpart}}
 #'
-#' @param data Data frame containing the variables in the model
-#' @param formula A \code{\link[stats]{formula}} with a response but no
-#'   interaction terms
-#' @param ... additional arguments to pass to \code{\link[rpart]{rpart}}
-#'
+#' @inheritParams twidlr_defaults
 #' @export
 #'
 #' @examples
-#' fit <- rpart(mtcars, hp ~ .)
-#' summary(fit)
+#' rpart(mtcars, hp ~ .)
 #'
 #' # Help page for function being twiddled
 #' ?rpart::rpart
