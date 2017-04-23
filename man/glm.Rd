@@ -21,7 +21,7 @@ This function passes a data.frame, formula, and additional arguments to
 \code{\link[stats]{glm}}.
 }
 \examples{
-fit <- glm(mtcars, hp ~ .)
+fit <- glm(mtcars, vs ~ hp + wt, family = binomial())
 summary(fit)
 
 # Help page for function being twiddled

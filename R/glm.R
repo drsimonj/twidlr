@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-#' fit <- glm(mtcars, hp ~ .)
+#' fit <- glm(mtcars, vs ~ hp + wt, family = binomial())
 #' summary(fit)
 #'
 #' # Help page for function being twiddled
