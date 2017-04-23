@@ -41,13 +41,14 @@ twidlr models
 
 data.frame-first formula-second model functions exposed by twidlr:
 
-| Package | Function | Supports.formula.operators |
-|:--------|:---------|:---------------------------|
-| glmnet  | glmnet   | Yes                        |
-| rpart   | rpart    | No                         |
-| stats   | glm      | Yes                        |
-| stats   | lm       | Yes                        |
-| xgboost | xgboost  | Yes                        |
+| Package      | Function     |
+|:-------------|:-------------|
+| glmnet       | glmnet       |
+| randomForest | randomForest |
+| rpart        | rpart        |
+| stats        | glm          |
+| stats        | lm           |
+| xgboost      | xgboost      |
 
 Contributing
 ------------
