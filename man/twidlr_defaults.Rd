@@ -8,7 +8,7 @@
 
 \item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
 
-\item{...}{additional arguments to pass to model function}
+\item{...}{Additional arguments to pass to model function}
 }
 \description{
 Default parameters used by twidlr functions
