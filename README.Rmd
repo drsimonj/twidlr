@@ -54,12 +54,13 @@ x <- data.frame(rbind(
   
   # Add new model functions here as c("Package", "Function") ------ >
   c("xgboost", "xgboost"),
-  c("glmnet", "glmnet")
+  c("glmnet", "glmnet"),
+  c("stats", "glm")
   
   # < ---------------------------------------------------------------
 ))
 
-knitr::kable(dplyr::arrange(x, Package))
+knitr::kable(x[order(x$Package, x$Function), ], row.names = FALSE)
 ```
 
 ## Contributing
