@@ -62,3 +62,7 @@ x <- data.frame(rbind(
 knitr::kable(dplyr::arrange(x, Package))
 ```
 
+## Contributing
+
+For conventions and best-practices when contributing to twidlr, please see [CONTRIBUTING.md](https://github.com/drsimonj/twidlr/blob/master/CONTRIBUTING.md)
+

@@ -46,3 +46,8 @@ data.frame-first formula-second model functions exposed by twidlr:
 | glmnet  | glmnet   |
 | stats   | lm       |
 | xgboost | xgboost  |
+
+Contributing
+------------
+
+For conventions and best-practices when contributing to twidlr, please see [CONTRIBUTING.md](https://github.com/drsimonj/twidlr/blob/master/CONTRIBUTING.md)
