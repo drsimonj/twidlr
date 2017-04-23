@@ -17,4 +17,5 @@ Suggests: testthat,
     xgboost,
     glmnet,
     rpart,
-    randomForest
+    randomForest,
+    lme4

@@ -58,7 +58,8 @@ x <- data.frame(rbind(
   c("glmnet", "glmnet"),
   c("stats", "glm"),
   c("rpart", "rpart"),
-  c("randomForest", "randomForest")
+  c("randomForest", "randomForest"),
+  c("lme4", "lmer")
   
   ## < ---------------------------------------------------------------
 ))
