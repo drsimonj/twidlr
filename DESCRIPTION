@@ -15,4 +15,5 @@ BugReports: https://github.com/drsimonj/twidlr/issues
 RoxygenNote: 6.0.1
 Suggests: testthat,
     xgboost,
-    glmnet
+    glmnet,
+    rpart
