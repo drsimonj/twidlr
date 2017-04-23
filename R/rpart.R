@@ -6,15 +6,13 @@
 #' @seealso \code{\link[rpart]{rpart}}
 #'
 #' @param data Data frame containing the variables in the model
-#' @param formula A \code{\link[stats]{formula}} with a response but no
-#'   interaction terms
+#' @param formula \code{\link[stats]{formula}} describing the model to be fitted
 #' @param ... additional arguments to pass to \code{\link[rpart]{rpart}}
 #'
 #' @export
 #'
 #' @examples
-#' fit <- rpart(mtcars, hp ~ .)
-#' summary(fit)
+#' rpart(mtcars, hp ~ .)
 #'
 #' # Help page for function being twiddled
 #' ?rpart::rpart

@@ -16,4 +16,5 @@ RoxygenNote: 6.0.1
 Suggests: testthat,
     xgboost,
     glmnet,
-    rpart
+    rpart,
+    randomForest
