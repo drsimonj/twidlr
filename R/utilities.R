@@ -16,7 +16,7 @@
 #'
 #' @export
 #'
-#' @seealso \code{\link[stats]{formula}}
+#' @seealso \code{\link[stats]{formula}} \code{\link[stats]{model.matrix}}
 #'
 #' @examples
 #' model_as_xy(mtcars, hp ~ mpg)
