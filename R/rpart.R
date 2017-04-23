@@ -6,7 +6,8 @@
 #' @seealso \code{\link[rpart]{rpart}}
 #'
 #' @param data Data frame containing the variables in the model
-#' @inheritParams stats::lm
+#' @param formula A \code{\link[stats]{formula}} with a response but no
+#'   interaction terms
 #' @param ... additional arguments to pass to \code{\link[rpart]{rpart}}
 #'
 #' @export

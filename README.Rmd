@@ -55,7 +55,8 @@ x <- data.frame(rbind(
   # Add new model functions here as c("Package", "Function") ------ >
   c("xgboost", "xgboost"),
   c("glmnet", "glmnet"),
-  c("stats", "glm")
+  c("stats", "glm"),
+  c("rpart", "rpart")
   
   # < ---------------------------------------------------------------
 ))

@@ -44,6 +44,7 @@ data.frame-first formula-second model functions exposed by twidlr:
 | Package | Function |
 |:--------|:---------|
 | glmnet  | glmnet   |
+| rpart   | rpart    |
 | stats   | glm      |
 | stats   | lm       |
 | xgboost | xgboost  |

@@ -9,10 +9,8 @@ rpart(data, formula, ...)
 \arguments{
 \item{data}{Data frame containing the variables in the model}
 
-\item{formula}{an object of class \code{"\link{formula}"} (or one that
-    can be coerced to that class): a symbolic description of the
-    model to be fitted.  The details of model specification are given
-    under \sQuote{Details}.}
+\item{formula}{A \code{\link[stats]{formula}} with a response but no
+interaction terms}
 
 \item{...}{additional arguments to pass to \code{\link[rpart]{rpart}}}
 }
