@@ -34,7 +34,7 @@ Motivation
 
 -   **Consistent API** for modelling functions (helping to improve the generality of tidy modelling packages like [piplearner](https://github.com/drsimonj/pipelearner))
 -   **[Tidyverse](http://tidyverse.org/) philosophy** by working with data frames and being pipeable such as `mtcars %>% lm(hp ~ wt)`
--   **Leverage formula operators** where they may not originally be available. For example, `glmnet(iris, Sepal.Width ~ Petal.Width * Petal.Length + Species)` to fit a generalized linear model with an interaction and automatically dummy-coded factor variable (`Species`).
+-   **Leverage formula operators** where they may be valid but not originally available. For example, `glmnet(iris, Sepal.Width ~ Petal.Width * Petal.Length + Species)` to fit a generalized linear model with an interaction and automatically dummy-coded factor variable (`Species`).
 
 twidlr models
 -------------
