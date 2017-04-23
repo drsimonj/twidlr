@@ -50,13 +50,13 @@ data.frame-first formula-second model functions exposed by twidlr:
 
 ```{r, echo = F}
 x <- data.frame(rbind(
-  c(Package = "stats", Function = "lm"),
+  c(Package = "stats", Function = "lm", `Supports formula operators` = "Yes"),
   
   # Add new model functions here as c("Package", "Function") ------ >
-  c("xgboost", "xgboost"),
-  c("glmnet", "glmnet"),
-  c("stats", "glm"),
-  c("rpart", "rpart")
+  c("xgboost", "xgboost", "Yes"),
+  c("glmnet", "glmnet", "Yes"),
+  c("stats", "glm", "Yes"),
+  c("rpart", "rpart", "No")
   
   # < ---------------------------------------------------------------
 ))
