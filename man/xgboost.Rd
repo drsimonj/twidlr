@@ -7,11 +7,11 @@
 xgboost(data, formula, ...)
 }
 \arguments{
-\item{data}{Data frame containing the variables in the model.}
+\item{data}{Data frame containing the variables in the model}
 
-\item{formula}{A formula of the form \code{y ~ x1 + x2 + ... + xi}}
+\item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
 
-\item{...}{additional arguments to pass to \code{\link[xgboost]{xgboost}}()}
+\item{...}{additional arguments to pass to model function}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to

@@ -11,7 +11,7 @@ randomForest(data, formula, ...)
 
 \item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
 
-\item{...}{additional arguments to pass to \code{\link[rpart]{rpart}}}
+\item{...}{additional arguments to pass to model function}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to

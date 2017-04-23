@@ -5,10 +5,7 @@
 #'
 #' @seealso \code{\link[rpart]{rpart}}
 #'
-#' @param data Data frame containing the variables in the model
-#' @param formula \code{\link[stats]{formula}} describing the model to be fitted
-#' @param ... additional arguments to pass to \code{\link[rpart]{rpart}}
-#'
+#' @inheritParams twidlr_defaults
 #' @export
 #'
 #' @examples

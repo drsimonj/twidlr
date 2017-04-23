@@ -5,10 +5,7 @@
 #'
 #' @seealso \code{\link[xgboost]{xgboost}}
 #'
-#' @param data Data frame containing the variables in the model.
-#' @param formula A formula of the form \code{y ~ x1 + x2 + ... + xi}
-#' @param ... additional arguments to pass to \code{\link[xgboost]{xgboost}}()
-#'
+#' @inheritParams twidlr_defaults
 #' @export
 #'
 #' @examples

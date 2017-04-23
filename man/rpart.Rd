@@ -9,18 +9,16 @@ rpart(data, formula, ...)
 \arguments{
 \item{data}{Data frame containing the variables in the model}
 
-\item{formula}{A \code{\link[stats]{formula}} with a response but no
-interaction terms}
+\item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
 
-\item{...}{additional arguments to pass to \code{\link[rpart]{rpart}}}
+\item{...}{additional arguments to pass to model function}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to
 \code{\link[rpart]{rpart}}.
 }
 \examples{
-fit <- rpart(mtcars, hp ~ .)
-summary(fit)
+rpart(mtcars, hp ~ .)
 
 # Help page for function being twiddled
 ?rpart::rpart
