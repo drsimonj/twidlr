@@ -59,7 +59,11 @@ x <- data.frame(rbind(
   c("stats", "glm"),
   c("rpart", "rpart"),
   c("randomForest", "randomForest"),
-  c("lme4", "lmer")
+  c("lme4", "lmer"),
+  c("quantreg","rq"),
+  c("quantreg","nlrq"),
+  c("quantreg","rqss"),
+  c("quantreg","crq")
   
   ## < ---------------------------------------------------------------
 ))
