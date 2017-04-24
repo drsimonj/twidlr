@@ -29,10 +29,12 @@ model_as_xy <- function(data, formula) {
     stop("Please provide a data frame and formula (see ?stats::formula)")
 
   # Convert data frame to input matrix and label vector
-  y <- NULL
-  if (length(formula) == 3)
-    y <- data[[as.character(formula[[2L]])]]
   x <- stats::model.matrix(object = formula, data = data)[,-1]
+  y <- NULL
+  if (length(formula) == 3) {
+    y <- data[[as.character(formula[[2L]])]]
+    y <- y[rownames(data) %in% rownames(x)]  # Handle removal of missing values
+  }
 
   list(x = x, y = y)
 }
