@@ -22,6 +22,7 @@
 #' # Help page for function being twiddled
 #' ?quantreg::crq
 crq <- function(data, formula, ...) {
+  check_pkg("quantreg")
   UseMethod("crq")
 }
 

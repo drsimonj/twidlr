@@ -14,6 +14,7 @@
 #' # Help page for function being twiddled
 #' ?rpart::rpart
 rpart <- function(data, formula, ...) {
+  check_pkg("rpart")
   UseMethod("rpart")
 }
 

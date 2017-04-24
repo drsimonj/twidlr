@@ -18,6 +18,7 @@
 #' # Help page for function being twiddled
 #' ?quantreg::rq
 rq <- function(data, formula, ...) {
+  check_pkg("quantreg")
   UseMethod("rq")
 }
 

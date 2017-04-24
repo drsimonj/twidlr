@@ -20,6 +20,7 @@
 #' # Help page for function being twiddled
 #' ?quantreg::nlrq
 nlrq <- function(data, formula, ...) {
+  check_pkg("quantreg")
   UseMethod("nlrq")
 }
 

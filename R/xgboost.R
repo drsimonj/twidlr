@@ -14,6 +14,7 @@
 #' # Help page for function being twiddled
 #' ?xgboost::xgboost
 xgboost <- function(data, formula, ...) {
+  check_pkg("xgboost")
   UseMethod("xgboost")
 }
 
