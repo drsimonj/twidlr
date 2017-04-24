@@ -18,4 +18,5 @@ Suggests: testthat,
     glmnet,
     rpart,
     randomForest,
-    lme4
+    lme4,
+    quantreg
