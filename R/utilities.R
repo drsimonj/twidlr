@@ -38,3 +38,22 @@ model_as_xy <- function(data, formula) {
 
   list(x = x, y = y)
 }
+
+#' Check for required package
+#'
+#' Check if package is locally installed and call `stop()` with an error message
+#' if not
+#'
+#' @param pkg_name Character of the package name to check
+#'
+#' @export
+#'
+#' @examples
+#' check_pkg("stats")
+#' check_pkg("dplyr")
+#' check_pkg("zzz")
+check_pkg <- function(pkg_name) {
+  if (!requireNamespace(pkg_name, quietly = TRUE)) {
+    stop("The '", pkg_name, "' package is needed. Please install it.", call. = FALSE)
+  }
+}
