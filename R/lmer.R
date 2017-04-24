@@ -17,6 +17,7 @@
 #' # Help page for function being twiddled
 #' ?lme4::lmer
 lmer <- function(data, formula, ...) {
+  check_pkg("lme4")
   UseMethod("lmer")
 }
 

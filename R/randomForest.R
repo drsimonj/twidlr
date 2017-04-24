@@ -14,6 +14,7 @@
 #' # Help page for function being twiddled
 #' ?randomForest::randomForest
 randomForest <- function(data, formula, ...) {
+  check_pkg("randomForest")
   UseMethod("randomForest")
 }
 

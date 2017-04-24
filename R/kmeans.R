@@ -39,6 +39,7 @@
 #' # Help page for function being twiddled
 #' ?stats::kmeans
 kmeans <- function(data, formula, ...) {
+  check_pkg("stats")
   UseMethod("kmeans")
 }
 

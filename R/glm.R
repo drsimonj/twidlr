@@ -15,6 +15,7 @@
 #' # Help page for function being twiddled
 #' ?stats::glm
 glm <- function(data, formula, ...) {
+  check_pkg("stats")
   UseMethod("glm")
 }
 

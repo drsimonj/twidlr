@@ -14,6 +14,7 @@
 #' # Help page for function being twiddled
 #' ?glmnet::glmnet
 glmnet <- function(data, formula, ...) {
+  check_pkg("glmnet")
   UseMethod("glmnet")
 }
 
