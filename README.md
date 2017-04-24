@@ -52,6 +52,7 @@ data.frame-first formula-second model functions exposed by twidlr:
 | randomForest | randomForest |
 | rpart        | rpart        |
 | stats        | glm          |
+| stats        | kmeans       |
 | stats        | lm           |
 | xgboost      | xgboost      |
 
