@@ -57,3 +57,13 @@ check_pkg <- function(pkg_name) {
     stop("The '", pkg_name, "' package is needed. Please install it.", call. = FALSE)
   }
 }
+
+#' Pipe operator
+#'
+#' @name %>%
+#' @rdname pipe
+#' @keywords internal
+#' @export
+#' @importFrom magrittr %>%
+#' @usage lhs \%>\% rhs
+NULL
