@@ -15,7 +15,6 @@
 #' ?stats::t.test
 t.test <- function(data, formula, ...) {
   check_pkg("stats")
-  message(1)
   UseMethod("ttest")
 }
 
