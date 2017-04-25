@@ -27,11 +27,7 @@ glmnet.default <- function(data, formula, ...) {
 glmnet.data.frame <- function(data, formula, ...) {
   dat <- model_as_xy(data, formula)
   object <- glmnet::glmnet(x = dat$x, y = dat$y, ...)
-
-  # Set up for twidlr predict function
-  class(object) <- c("twidlr_glmnet", class(fit))
-  attr(object, "formula") <- formula
-  fit
+  twiddle(object, "glmnet", formula)
 }
 
 #' Predict method for twidlr \code{\link{glmnet}}

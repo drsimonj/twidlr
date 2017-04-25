@@ -2,7 +2,7 @@
 % Please edit documentation in R/glmnet.R
 \name{predict.twidlr_glmnet}
 \alias{predict.twidlr_glmnet}
-\title{Predict method for \code{\link{glmnet}}}
+\title{Predict method for twidlr \code{\link{glmnet}}}
 \usage{
 \method{predict}{twidlr_glmnet}(object, data, ...)
 }
@@ -14,5 +14,5 @@
 \item{...}{Additional arguments to pass to model function}
 }
 \description{
-Predict method for \code{\link{glmnet}}
+Predict method for twidlr \code{\link{glmnet}}
 }
