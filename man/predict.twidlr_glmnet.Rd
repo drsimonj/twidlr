@@ -2,10 +2,10 @@
 % Please edit documentation in R/glmnet.R
 \name{predict.twidlr_glmnet}
 \alias{predict.twidlr_glmnet}
-\title{object-first data.frame-second method for \code{\link[glmnet]{predict.glmnet}}}
+\title{twildr compatible predict for \code{\link[glmnet]{glmnet}}}
 \usage{
 \method{predict}{twidlr_glmnet}(object, data, ...)
 }
 \description{
-object-first data.frame-second method for \code{\link[glmnet]{predict.glmnet}}
+twildr compatible predict for \code{\link[glmnet]{glmnet}}
 }
