@@ -33,5 +33,20 @@ crq.default <- function(data, formula, ...) {
 
 #' @export
 crq.data.frame <- function(data, formula, ...) {
-  quantreg::crq(formula = formula, data = data, ...)
+  object <- quantreg::crq(formula = formula, data = data, ...)
+  twiddle(object, "crq")
+}
+
+#' \code{\link[quantreg]{crq}} for twidlr's \code{\link{crq}}
+#'
+#' @inheritParams twidlr_defaults
+#'
+#' @export
+#'
+predict.twidlr_crq <- function(object, data, ...) {
+  if (hasArg(newdata)) {
+    stop("Please use 'data' instead of 'newdata' when using twidlr")
+  }
+
+  quantreg::predict.crq(object, newdata = data, ...)
 }
