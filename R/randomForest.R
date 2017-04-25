@@ -34,5 +34,3 @@ predict.randomForest <- function(object, data, ...) {
   if (hasArg(newdata)) data <- newdata
   randomForest:::predict.randomForest(object, newdata = data, ...)
 }
-
-
