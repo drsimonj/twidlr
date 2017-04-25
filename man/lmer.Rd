@@ -2,9 +2,12 @@
 % Please edit documentation in R/lmer.R
 \name{lmer}
 \alias{lmer}
+\alias{predict.merMod}
 \title{data.frame-first formula-second method for \code{\link[lme4]{lmer}}}
 \usage{
 lmer(data, formula, ...)
+
+\method{predict}{merMod}(object, data, ...)
 }
 \arguments{
 \item{data}{frame containing the variables in the model}

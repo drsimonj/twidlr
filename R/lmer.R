@@ -30,3 +30,11 @@ lmer.default <- function(data, formula, ...) {
 lmer.data.frame <- function(data, formula, ...) {
   lme4::lmer(formula = formula, data = data, ...)
 }
+
+#' @rdname lmer
+#' @export predict.merMod
+predict.merMod <- function(object, data, ...) {
+  if (hasArg(newdata)) stop("Please specify 'data' instead of 'newdata'")
+  if (missing(data)) return (lme4:::predict.merMod(object, ...))
+  lme4:::predict.merMod(object, newdata = data, ...)
+}
