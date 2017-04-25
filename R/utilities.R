@@ -79,7 +79,7 @@ NULL
 #'
 #' @export
 twiddle <- function(object, suffix, formula) {
-  class(object) <- c(paste("twidlr_", suffix), class(object))
+  class(object) <- c(paste0("twidlr_", suffix), class(object))
   attr(object, "formula") <- formula
   object
 }
