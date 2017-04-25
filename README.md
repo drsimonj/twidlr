@@ -54,6 +54,7 @@ data.frame-first formula-second model functions exposed by twidlr:
 | stats        | glm          |
 | stats        | kmeans       |
 | stats        | lm           |
+| stats        | t.test       |
 | xgboost      | xgboost      |
 
 Contributing
