@@ -27,3 +27,10 @@ rpart.default <- function(data, formula, ...) {
 rpart.data.frame <- function(data, formula, ...) {
   rpart::rpart(formula = formula, data = data, ...)
 }
+
+#' @rdname rpart
+#' @export predict.rpart
+predict.rpart <- function(object, data, ...) {
+  if (hasArg(newdata)) data <- newdata
+  rpart:::predict.rpart(object, newdata = data, ...)
+}
