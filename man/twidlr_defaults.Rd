@@ -8,6 +8,8 @@
 
 \item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
 
+\item{object}{Fitted model}
+
 \item{...}{Additional arguments to pass to model function}
 }
 \description{

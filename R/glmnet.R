@@ -28,16 +28,15 @@ glmnet.data.frame <- function(data, formula, ...) {
   dat <- model_as_xy(data, formula)
   object <- glmnet::glmnet(x = dat$x, y = dat$y, ...)
 
-  # Set up for custom predict function
+  # Set up for twidlr predict function
   class(object) <- c("twidlr_glmnet", class(fit))
   attr(object, "formula") <- formula
   fit
 }
 
-#' Predict method for \code{\link{glmnet}}
+#' Predict method for twidlr \code{\link{glmnet}}
 #'
-#' @param object Fitted \code{\link{glmnet}} model
-#' @param data Data frame containing variables in the model
+#' @inheritParams twidlr_defaults
 #'
 #' @export
 predict.twidlr_glmnet <- function(object, data, ...) {

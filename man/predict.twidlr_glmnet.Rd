@@ -7,9 +7,11 @@
 \method{predict}{twidlr_glmnet}(object, data, ...)
 }
 \arguments{
-\item{object}{Fitted \code{\link{glmnet}} model}
+\item{object}{Fitted model}
 
-\item{data}{Data frame containing variables in the model}
+\item{data}{Data frame containing the variables in the model}
+
+\item{...}{Additional arguments to pass to model function}
 }
 \description{
 Predict method for \code{\link{glmnet}}

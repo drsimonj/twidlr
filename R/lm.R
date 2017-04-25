@@ -28,3 +28,24 @@ lm.default <- function(data, formula, ...) {
 lm.data.frame <- function(data, formula, ...) {
   stats::lm(formula = formula, data = data, ...)
 }
+
+#' Predict method for twidlr \code{\link{lm}}
+#'
+#' @inheritParams twidlr_defaults
+#'
+#' @export
+predict.twidlr_lm <- function(object, data, ...) {
+  if (hasArg(newx)) {
+    stop("twidlr replaces 'newx' with 'data'. Please see examples in ?twidlr")
+  }
+
+  if (missing(data)) {
+    if (hasArg(type) && list(...)["type"] %in% c("coefficients", "nonzero")) {
+      return (NextMethod("predict", object, ...))
+    }
+    stop ("You need to supply a value for 'data'")
+  }
+
+  data <- model_as_xy(data, attr(object, "formula"))$x
+  NextMethod("predict", object, newx = data, ...)
+}
