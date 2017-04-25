@@ -2,7 +2,7 @@
 % Please edit documentation in R/glmnet.R
 \name{predict.twidlr_glmnet}
 \alias{predict.twidlr_glmnet}
-\title{Predict method for twidlr \code{\link{glmnet}}}
+\title{\code{\link[glmnet]{predict.glmnet}} for twidlr's \code{\link{glmnet}}}
 \usage{
 \method{predict}{twidlr_glmnet}(object, data, ...)
 }
@@ -14,5 +14,12 @@
 \item{...}{Additional arguments to pass to model function}
 }
 \description{
-Predict method for twidlr \code{\link{glmnet}}
+\code{\link[glmnet]{predict.glmnet}} for twidlr's \code{\link{glmnet}}
+}
+\examples{
+fit <- glmnet(mtcars, hp ~ .)
+coef(fit)
+coef(fit, s = 0.01)
+predict(fit, data = mtcars)
+predict(fit, data = mtcars, s = 0.01)
 }

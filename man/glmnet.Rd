@@ -19,10 +19,8 @@ This function passes a data.frame, formula, and additional arguments to
 }
 \examples{
 glmnet(mtcars, hp ~ .)
-
-# Help page for function being twiddled
-?glmnet::glmnet
 }
 \seealso{
-\code{\link[glmnet]{glmnet}}
+\code{\link[glmnet]{glmnet}} for source model;
+  \code{\link{predict.twidlr_glmnet}} for predictions
 }

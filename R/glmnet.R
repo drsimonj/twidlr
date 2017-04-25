@@ -3,16 +3,14 @@
 #' This function passes a data.frame, formula, and additional arguments to
 #' \code{\link[glmnet]{glmnet}}().
 #'
-#' @seealso \code{\link[glmnet]{glmnet}}
+#' @seealso \code{\link[glmnet]{glmnet}} for source model;
+#'   \code{\link{predict.twidlr_glmnet}} for predictions
 #'
 #' @inheritParams twidlr_defaults
 #' @export
 #'
 #' @examples
 #' glmnet(mtcars, hp ~ .)
-#'
-#' # Help page for function being twiddled
-#' ?glmnet::glmnet
 glmnet <- function(data, formula, ...) {
   check_pkg("glmnet")
   UseMethod("glmnet")
@@ -30,14 +28,21 @@ glmnet.data.frame <- function(data, formula, ...) {
   twiddle(object, "glmnet", formula)
 }
 
-#' Predict method for twidlr \code{\link{glmnet}}
+#' \code{\link[glmnet]{predict.glmnet}} for twidlr's \code{\link{glmnet}}
 #'
 #' @inheritParams twidlr_defaults
 #'
 #' @export
+#'
+#' @examples
+#' fit <- glmnet(mtcars, hp ~ .)
+#' coef(fit)
+#' coef(fit, s = 0.01)
+#' predict(fit, data = mtcars)
+#' predict(fit, data = mtcars, s = 0.01)
 predict.twidlr_glmnet <- function(object, data, ...) {
   if (hasArg(newx)) {
-    stop("twidlr replaces 'newx' with 'data'. Please see examples in ?twidlr")
+    stop("Please use 'data' instead of 'newx' when using twidlr")
   }
 
   if (missing(data)) {
