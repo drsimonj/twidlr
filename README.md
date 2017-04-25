@@ -44,6 +44,7 @@ data.frame-first formula-second model functions exposed by twidlr:
 | Package      | Function     |
 |:-------------|:-------------|
 | glmnet       | glmnet       |
+| lme4         | glmer        |
 | lme4         | lmer         |
 | quantreg     | crq          |
 | quantreg     | nlrq         |
