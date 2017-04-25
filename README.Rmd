@@ -64,7 +64,8 @@ x <- data.frame(rbind(
   c("quantreg","nlrq"),
   c("quantreg","rqss"),
   c("quantreg","crq"),
-  c("stats", "kmeans")
+  c("stats", "kmeans"),
+  c("stats", "t.test")
   
   ## < ---------------------------------------------------------------
 ))
