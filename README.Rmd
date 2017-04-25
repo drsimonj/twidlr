@@ -60,6 +60,7 @@ x <- data.frame(rbind(
   c("rpart", "rpart"),
   c("randomForest", "randomForest"),
   c("lme4", "lmer"),
+  c("lme4", "glmer"),
   c("quantreg","rq"),
   c("quantreg","nlrq"),
   c("quantreg","rqss"),
