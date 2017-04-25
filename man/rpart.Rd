@@ -2,9 +2,12 @@
 % Please edit documentation in R/rpart.R
 \name{rpart}
 \alias{rpart}
+\alias{predict.rpart}
 \title{data.frame-first formula-second method for \code{\link[rpart]{rpart}}}
 \usage{
 rpart(data, formula, ...)
+
+\method{predict}{rpart}(object, data, ...)
 }
 \arguments{
 \item{data}{Data frame containing the variables in the model}
@@ -12,6 +15,8 @@ rpart(data, formula, ...)
 \item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
 
 \item{...}{Additional arguments to pass to model function}
+
+\item{object}{Fitted model}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to

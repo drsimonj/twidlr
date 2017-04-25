@@ -33,3 +33,10 @@ nlrq.default <- function(data, formula, ...) {
 nlrq.data.frame <- function(data, formula, ...) {
   quantreg::nlrq(formula = formula, data = data, ...)
 }
+
+#' @rdname nlrq
+#' @export predict.nlrq
+predict.nlrq <- function(object, data, ...) {
+  if (hasArg(newdata)) data <- newdata
+  quantreg::predict.nlrq(object, newdata = data, ...)
+}

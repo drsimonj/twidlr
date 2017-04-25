@@ -16,5 +16,5 @@ test_that("fit", {
 })
 
 test_that("predict", {
-  expect_equal(predict(twidlr_fit), predict(origin_fit))
+  expect_equal(predict(twidlr_fit), quantreg::predict.crq(origin_fit))
 })

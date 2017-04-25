@@ -31,3 +31,10 @@ rq.default <- function(data, formula, ...) {
 rq.data.frame <- function(data, formula, ...) {
   quantreg::rq(formula = formula, data = data, ...)
 }
+
+#' @rdname rq
+#' @export predict.rq
+predict.rq <- function(object, data, ...) {
+  if (hasArg(newdata)) data <- newdata
+  quantreg::predict.rq(object, newdata = data, ...)
+}

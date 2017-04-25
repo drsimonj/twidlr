@@ -11,6 +11,7 @@
 #' @examples
 #' fit <- glm(mtcars, vs ~ hp + wt, family = binomial())
 #' summary(fit)
+#' predict(fit mtcars[1:5,])
 #'
 #' # Help page for function being twiddled
 #' ?stats::glm
@@ -30,22 +31,9 @@ glm.data.frame <- function(data, formula, ...) {
   twiddle(object, "glm")
 }
 
-
-#' \code{\link[stats]{predict.glm}} for twidlr's \code{\link{glm}}
-#'
-#' @inheritParams twidlr_defaults
-#'
-#' @export
-#'
-#' @examples
-#' fit <- glm(mtcars, hp ~ .)
-#' predict(fit)
-#' predict(fit, mtcars[1:5, ])
-#' predict(fit, data = mtcars[1:10,])
-predict.twidlr_glm <- function(object, data, ...) {
-  if (hasArg(newdata)) {
-    stop("Please use 'data' instead of 'newdata' when using twidlr")
-  }
-
+#' @rdname glm
+#' @export predict.glm
+predict.glm <- function(object, data, ...) {
+  if (hasArg(newdata)) data <- newdata
   stats::predict.glm(object, newdata = data, ...)
 }
