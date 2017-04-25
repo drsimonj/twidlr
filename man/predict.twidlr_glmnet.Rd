@@ -2,10 +2,15 @@
 % Please edit documentation in R/glmnet.R
 \name{predict.twidlr_glmnet}
 \alias{predict.twidlr_glmnet}
-\title{twildr compatible predict for \code{\link[glmnet]{glmnet}}}
+\title{Predict method for \code{\link{glmnet}}}
 \usage{
 \method{predict}{twidlr_glmnet}(object, data, ...)
 }
+\arguments{
+\item{object}{Fitted \code{\link{glmnet}} model}
+
+\item{data}{Data frame containing variables in the model}
+}
 \description{
-twildr compatible predict for \code{\link[glmnet]{glmnet}}
+Predict method for \code{\link{glmnet}}
 }

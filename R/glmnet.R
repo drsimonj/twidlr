@@ -34,7 +34,10 @@ glmnet.data.frame <- function(data, formula, ...) {
   fit
 }
 
-#' twildr compatible predict for \code{\link[glmnet]{glmnet}}
+#' Predict method for \code{\link{glmnet}}
+#'
+#' @param object Fitted \code{\link{glmnet}} model
+#' @param data Data frame containing variables in the model
 #'
 #' @export
 predict.twidlr_glmnet <- function(object, data, ...) {
