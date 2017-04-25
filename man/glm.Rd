@@ -2,9 +2,12 @@
 % Please edit documentation in R/glm.R
 \name{glm}
 \alias{glm}
+\alias{predict.crq}
 \title{data.frame-first formula-second method for \code{\link[stats]{glm}}}
 \usage{
 glm(data, formula, ...)
+
+\method{predict}{crq}(object, data, ...)
 }
 \arguments{
 \item{data}{Data frame containing the variables in the model}
@@ -12,6 +15,8 @@ glm(data, formula, ...)
 \item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
 
 \item{...}{Additional arguments to pass to model function}
+
+\item{object}{Fitted model}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to
@@ -20,6 +25,7 @@ This function passes a data.frame, formula, and additional arguments to
 \examples{
 fit <- glm(mtcars, vs ~ hp + wt, family = binomial())
 summary(fit)
+predict(fit mtcars[1:5,])
 
 # Help page for function being twiddled
 ?stats::glm
