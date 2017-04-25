@@ -2,7 +2,7 @@
 % Please edit documentation in R/lm.R
 \name{predict.twidlr_lm}
 \alias{predict.twidlr_lm}
-\title{Predict method for twidlr \code{\link{lm}}}
+\title{\code{\link[stats]{predict.lm}} for twidlr's \code{\link{lm}}}
 \usage{
 \method{predict}{twidlr_lm}(object, data, ...)
 }
@@ -14,5 +14,11 @@
 \item{...}{Additional arguments to pass to model function}
 }
 \description{
-Predict method for twidlr \code{\link{lm}}
+\code{\link[stats]{predict.lm}} for twidlr's \code{\link{lm}}
+}
+\examples{
+fit <- lm(mtcars, hp ~ .)
+predict(fit)
+predict(fit, mtcars[1:5, ])
+predict(fit, data = mtcars[1:10,])
 }

@@ -80,6 +80,6 @@ NULL
 #' @export
 twiddle <- function(object, suffix, formula) {
   class(object) <- c(paste0("twidlr_", suffix), class(object))
-  attr(object, "formula") <- formula
+  if (hasArg(formula)) attr(object, "formula") <- formula
   object
 }
