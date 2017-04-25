@@ -20,6 +20,7 @@
 fit <- glmnet(mtcars, hp ~ .)
 coef(fit)
 coef(fit, s = 0.01)
+predict(fit, mtcars[1:5,], s = .04)
 predict(fit, data = mtcars)
 predict(fit, data = mtcars, s = 0.01)
 }

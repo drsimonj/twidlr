@@ -38,6 +38,7 @@ glmnet.data.frame <- function(data, formula, ...) {
 #' fit <- glmnet(mtcars, hp ~ .)
 #' coef(fit)
 #' coef(fit, s = 0.01)
+#' predict(fit, mtcars[1:5,], s = .04)
 #' predict(fit, data = mtcars)
 #' predict(fit, data = mtcars, s = 0.01)
 predict.twidlr_glmnet <- function(object, data, ...) {
@@ -47,11 +48,11 @@ predict.twidlr_glmnet <- function(object, data, ...) {
 
   if (missing(data)) {
     if (hasArg(type) && list(...)["type"] %in% c("coefficients", "nonzero")) {
-      return (NextMethod("predict", object, ...))
+      return (glmnet::predict.glmnet(object, ...))
     }
     stop ("You need to supply a value for 'data'")
   }
 
   data <- model_as_xy(data, attr(object, "formula"))$x
-  NextMethod("predict", object, newx = data, ...)
+  glmnet::predict.glmnet(object, newx = data, ...)
 }
