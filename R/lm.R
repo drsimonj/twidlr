@@ -26,24 +26,17 @@ lm.default <- function(data, formula, ...) {
 
 #' @export
 lm.data.frame <- function(data, formula, ...) {
-  object <- stats::lm(formula = formula, data = data, ...)
-  twiddle(object, "lm")
+  stats::lm(formula = formula, data = data, ...)
 }
 
-#' \code{\link[stats]{predict.lm}} for twidlr's \code{\link{lm}}
-#'
-#' @inheritParams twidlr_defaults
-#'
-#' @export
-#'
-#' @examples
-#' fit <- lm(mtcars, hp ~ .)
-#' predict(fit)
-#' predict(fit, mtcars[1:5, ])
-#' predict(fit, data = mtcars[1:10,])
-predict.twidlr_lm <- function(object, data, ...) {
+#' @export predict.lm
+predict.lm <- function(object, data, ...) {
   if (hasArg(newdata)) {
-    stop("Please use 'data' instead of 'newdata' when using twidlr")
+    if (hasArg(data)) {
+      message("Only one of 'data' or 'newdata' needs to be provided. Will use 'data'.")
+    } else {
+      data <- newdata
+    }
   }
 
   stats::predict.lm(object, newdata = data, ...)
