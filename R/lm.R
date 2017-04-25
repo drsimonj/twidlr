@@ -21,8 +21,6 @@ lm <- function(data, formula, ...) {
 
 #' @export
 lm.default <- function(data, formula, ...) {
-  #stop("twidlr::lm() requires the first argument `data` to be a data frame. ",
-  #     "If you are attempting to use lm() normally, use `stats::lm()`")
   lm.data.frame(as.data.frame(data), formula, ...)
 }
 
