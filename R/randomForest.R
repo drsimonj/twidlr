@@ -27,3 +27,12 @@ randomForest.default <- function(data, formula, ...) {
 randomForest.data.frame <- function(data, formula, ...) {
   randomForest::randomForest(formula = formula, data = data, ...)
 }
+
+#' @rdname randomForest
+#' @export predict.randomForest
+predict.randomForest <- function(object, data, ...) {
+  if (hasArg(newdata)) data <- newdata
+  randomForest:::predict.randomForest(object, newdata = data, ...)
+}
+
+
