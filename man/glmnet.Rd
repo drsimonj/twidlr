@@ -2,9 +2,12 @@
 % Please edit documentation in R/glmnet.R
 \name{glmnet}
 \alias{glmnet}
+\alias{predict.glmnet}
 \title{data.frame-first formula-second method for \code{\link[glmnet]{glmnet}}}
 \usage{
 glmnet(data, formula, ...)
+
+\method{predict}{glmnet}(object, data, ...)
 }
 \arguments{
 \item{data}{Data frame containing the variables in the model}
@@ -12,6 +15,8 @@ glmnet(data, formula, ...)
 \item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
 
 \item{...}{Additional arguments to pass to model function}
+
+\item{object}{Fitted model}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to

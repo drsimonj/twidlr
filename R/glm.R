@@ -33,7 +33,7 @@ glm.data.frame <- function(data, formula, ...) {
 
 #' @rdname glm
 #' @export predict.glm
-predict.crq <- function(object, data, ...) {
+predict.glm <- function(object, data, ...) {
   if (hasArg(newdata)) data <- newdata
   stats::predict.glm(object, newdata = data, ...)
 }

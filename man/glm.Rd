@@ -2,12 +2,12 @@
 % Please edit documentation in R/glm.R
 \name{glm}
 \alias{glm}
-\alias{predict.crq}
+\alias{predict.glm}
 \title{data.frame-first formula-second method for \code{\link[stats]{glm}}}
 \usage{
 glm(data, formula, ...)
 
-\method{predict}{crq}(object, data, ...)
+\method{predict}{glm}(object, data, ...)
 }
 \arguments{
 \item{data}{Data frame containing the variables in the model}

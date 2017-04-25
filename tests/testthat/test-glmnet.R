@@ -9,5 +9,5 @@ test_that("fit", {
 
 test_that("predict", {
   expect_equal(predict(twidlr_fit, data = mtcars),
-               predict(origin_fit, newx = model.matrix(hp ~ ., mtcars)))
+               glmnet::predict.glmnet(origin_fit, newx = model.matrix(hp ~ ., mtcars)))
 })
