@@ -39,6 +39,8 @@ predict.glmnet <- function(object, data, ...) {
   if (missing(data)) {
     if (hasArg(type) && type %in% c("coefficients", "nonzero")) {
       return (glmnet::predict.glmnet(object, ...))
+    } else {
+      stop ("You need to supply a value for 'data'")
     }
   }
 
