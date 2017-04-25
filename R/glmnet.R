@@ -3,16 +3,14 @@
 #' This function passes a data.frame, formula, and additional arguments to
 #' \code{\link[glmnet]{glmnet}}().
 #'
-#' @seealso \code{\link[glmnet]{glmnet}}
+#' @seealso \code{\link[glmnet]{glmnet}} for source model;
+#'   \code{\link{predict.twidlr_glmnet}} for predictions
 #'
 #' @inheritParams twidlr_defaults
 #' @export
 #'
 #' @examples
 #' glmnet(mtcars, hp ~ .)
-#'
-#' # Help page for function being twiddled
-#' ?glmnet::glmnet
 glmnet <- function(data, formula, ...) {
   check_pkg("glmnet")
   UseMethod("glmnet")
@@ -27,31 +25,34 @@ glmnet.default <- function(data, formula, ...) {
 glmnet.data.frame <- function(data, formula, ...) {
   dat <- model_as_xy(data, formula)
   object <- glmnet::glmnet(x = dat$x, y = dat$y, ...)
-
-  # Set up for custom predict function
-  class(object) <- c("twidlr_glmnet", class(fit))
-  attr(object, "formula") <- formula
-  fit
+  twiddle(object, "glmnet", formula)
 }
 
-#' Predict method for \code{\link{glmnet}}
+#' \code{\link[glmnet]{predict.glmnet}} for twidlr's \code{\link{glmnet}}
 #'
-#' @param object Fitted \code{\link{glmnet}} model
-#' @param data Data frame containing variables in the model
+#' @inheritParams twidlr_defaults
 #'
 #' @export
+#'
+#' @examples
+#' fit <- glmnet(mtcars, hp ~ .)
+#' coef(fit)
+#' coef(fit, s = 0.01)
+#' predict(fit, mtcars[1:5,], s = .04)
+#' predict(fit, data = mtcars)
+#' predict(fit, data = mtcars, s = 0.01)
 predict.twidlr_glmnet <- function(object, data, ...) {
   if (hasArg(newx)) {
-    stop("twidlr replaces 'newx' with 'data'. Please see examples in ?twidlr")
+    stop("Please use 'data' instead of 'newx' when using twidlr")
   }
 
   if (missing(data)) {
     if (hasArg(type) && list(...)["type"] %in% c("coefficients", "nonzero")) {
-      return (NextMethod("predict", object, ...))
+      return (glmnet::predict.glmnet(object, ...))
     }
     stop ("You need to supply a value for 'data'")
   }
 
   data <- model_as_xy(data, attr(object, "formula"))$x
-  NextMethod("predict", object, newx = data, ...)
+  glmnet::predict.glmnet(object, newx = data, ...)
 }

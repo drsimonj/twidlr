@@ -2,15 +2,25 @@
 % Please edit documentation in R/glmnet.R
 \name{predict.twidlr_glmnet}
 \alias{predict.twidlr_glmnet}
-\title{Predict method for \code{\link{glmnet}}}
+\title{\code{\link[glmnet]{predict.glmnet}} for twidlr's \code{\link{glmnet}}}
 \usage{
 \method{predict}{twidlr_glmnet}(object, data, ...)
 }
 \arguments{
-\item{object}{Fitted \code{\link{glmnet}} model}
+\item{object}{Fitted model}
 
-\item{data}{Data frame containing variables in the model}
+\item{data}{Data frame containing the variables in the model}
+
+\item{...}{Additional arguments to pass to model function}
 }
 \description{
-Predict method for \code{\link{glmnet}}
+\code{\link[glmnet]{predict.glmnet}} for twidlr's \code{\link{glmnet}}
+}
+\examples{
+fit <- glmnet(mtcars, hp ~ .)
+coef(fit)
+coef(fit, s = 0.01)
+predict(fit, mtcars[1:5,], s = .04)
+predict(fit, data = mtcars)
+predict(fit, data = mtcars, s = 0.01)
 }

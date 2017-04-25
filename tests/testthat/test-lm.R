@@ -1,6 +1,12 @@
 context("lm")
 
-test_that("== stats output", {
-  expect_equal(stats::coef(twidlr::lm(mtcars, hp ~ .)),
-               stats::coef(stats::lm(hp ~ ., mtcars)))
+twidlr_fit <- twidlr::lm(mtcars, hp ~ .)
+stats_fit  <- stats::lm(hp ~ ., mtcars)
+
+test_that("fit", {
+  expect_equal(coef(twidlr_fit), coef(stats_fit))
+})
+
+test_that("predict", {
+  expect_equal(predict(twidlr_fit), predict(stats_fit))
 })

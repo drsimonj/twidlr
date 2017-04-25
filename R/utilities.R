@@ -67,3 +67,19 @@ check_pkg <- function(pkg_name) {
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
 NULL
+
+#' Add twidlr_* class and formula attribute to object
+#'
+#' Make S3 objects twidlr-compatible to leverage special methods like "predict"
+#' adding a twidlr_* class to it and a formula attribute
+#'
+#' @param object S3 object
+#' @param suffix Character string pasted after "twidlr_" and used as new class
+#' @param formula \code{\link[stats]{formula}} to be added as an attribute "formula"
+#'
+#' @export
+twiddle <- function(object, suffix, formula) {
+  class(object) <- c(paste0("twidlr_", suffix), class(object))
+  if (hasArg(formula)) attr(object, "formula") <- formula
+  object
+}
