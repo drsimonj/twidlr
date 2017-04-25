@@ -36,10 +36,15 @@ crq.data.frame <- function(data, formula, ...) {
   quantreg::crq(formula = formula, data = data, ...)
 }
 
+#' @rdname crq
 #' @export predict.crq
 predict.crq <- function(object, data, ...) {
   if (hasArg(newdata)) {
-    stop("Please use 'data' instead of 'newdata' when using twidlr")
+    if (hasArg(data)) {
+      message("Only one of 'data' or 'newdata' needs to be provided. Will use 'data'.")
+    } else {
+      data <- newdata
+    }
   }
 
   quantreg::predict.crq(object, newdata = data, ...)

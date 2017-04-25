@@ -29,6 +29,7 @@ lm.data.frame <- function(data, formula, ...) {
   stats::lm(formula = formula, data = data, ...)
 }
 
+#' @rdname lm
 #' @export predict.lm
 predict.lm <- function(object, data, ...) {
   if (hasArg(newdata)) {
