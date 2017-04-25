@@ -39,13 +39,6 @@ crq.data.frame <- function(data, formula, ...) {
 #' @rdname crq
 #' @export predict.crq
 predict.crq <- function(object, data, ...) {
-  if (hasArg(newdata)) {
-    if (hasArg(data)) {
-      message("Only one of 'data' or 'newdata' needs to be provided. Will use 'data'.")
-    } else {
-      data <- newdata
-    }
-  }
-
+  if (hasArg(newdata)) data <- newdata
   quantreg::predict.crq(object, newdata = data, ...)
 }

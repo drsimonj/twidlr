@@ -32,14 +32,7 @@ lm.data.frame <- function(data, formula, ...) {
 #' @rdname lm
 #' @export predict.lm
 predict.lm <- function(object, data, ...) {
-  if (hasArg(newdata)) {
-    if (hasArg(data)) {
-      message("Only one of 'data' or 'newdata' needs to be provided. Will use 'data'.")
-    } else {
-      data <- newdata
-    }
-  }
-
+  if (hasArg(newdata)) data <- newdata
   stats::predict.lm(object, newdata = data, ...)
 }
 
