@@ -96,8 +96,7 @@ glm.default <- function(data, formula, ...) {
 
 #' @export
 glm.data.frame <- function(data, formula, ...) {
-  object <- stats::glm(formula = formula, data = data, ...)
-  twiddle(object, "glm")
+  stats::glm(formula = formula, data = data, ...)
 }
 
 #' @rdname glm
