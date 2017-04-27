@@ -67,3 +67,18 @@ check_pkg <- function(pkg_name) {
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
 NULL
+
+#' Evaluate a function and list of arguments
+#'
+#' Evaluate a function and a named list of corresponding arguments
+#'
+#' @param .f A function
+#' @param args Named list of arguments
+#'
+#' @export
+#'
+#' @examples
+#' eval_fun(mean, list(x = c(1, 2, NA, 3), na.rm = TRUE))
+eval_fun <- function(.f, args) {
+  eval(as.call(c(lazyeval::expr_find(.f), args)))
+}
