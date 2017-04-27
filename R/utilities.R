@@ -73,12 +73,12 @@ NULL
 #' Evaluate a function and a named list of corresponding arguments
 #'
 #' @param .f A function
-#' @param args Named list of arguments
+#' @param ... Arguments to pass to functions
 #'
 #' @export
 #'
 #' @examples
-#' eval_fun(mean, list(x = c(1, 2, NA, 3), na.rm = TRUE))
-eval_fun <- function(.f, args) {
-  eval(as.call(c(lazyeval::expr_find(.f), args)))
+#' eval_fun(mean, x = c(1, 2, NA, 3), na.rm = TRUE)
+eval_fun <- function(.f, ...) {
+  eval(lazyeval::call_new(.f, ...))
 }

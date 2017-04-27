@@ -4,16 +4,16 @@
 \alias{eval_fun}
 \title{Evaluate a function and list of arguments}
 \usage{
-eval_fun(.f, args)
+eval_fun(.f, ...)
 }
 \arguments{
 \item{.f}{A function}
 
-\item{args}{Named list of arguments}
+\item{...}{Arguments to pass to functions}
 }
 \description{
 Evaluate a function and a named list of corresponding arguments
 }
 \examples{
-eval_fun(mean, list(x = c(1, 2, NA, 3), na.rm = TRUE))
+eval_fun(mean, x = c(1, 2, NA, 3), na.rm = TRUE)
 }
