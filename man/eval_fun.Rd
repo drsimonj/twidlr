@@ -14,3 +14,6 @@ eval_fun(.f, args)
 \description{
 Evaluate a function and a named list of corresponding arguments
 }
+\examples{
+eval_fun(mean, list(x = c(1, 2, NA, 3), na.rm = TRUE))
+}
