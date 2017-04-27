@@ -67,4 +67,3 @@ check_pkg <- function(pkg_name) {
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
 NULL
-
