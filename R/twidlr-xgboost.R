@@ -25,19 +25,16 @@ xgboost.default <- function(data, formula, ...) {
 
 #' @export
 xgboost.data.frame <- function(data, formula, ...) {
-  dat <- model_as_xy(data, formula)
-  object <- xgboost::xgboost(data = dat$x, label = dat$y, ...)
-  attr(object, "formula") <- formula
+  data <- model_as_xy(data, formula)
+  object <- eval_fun(xgboost::xgboost, data = data$x, label = data$y, ...)
+  attr(object, "formula") <- formula # For predict
   object
 }
 
 #' @rdname xgboost
 #' @export predict.xgb.Booster
 predict.xgb.Booster <- function(object, data, ...) {
-  if (hasArg(newdata)) {
-    return (xgboost:::predict.xgb.Booster(object, newdata = newdata, ...))
-  }
-
-  data <- model_as_xy(data, attr(object, "formula"))$x
-  xgboost:::predict.xgb.Booster(object, newdata = data, ...)
+  if (hasArg(newdata)) stop("Please specify 'data' instead of 'newdata'")
+  data <- model_as_xy(data, attr(object, "formula"))
+  eval_fun(xgboost:::predict.xgb.Booster, object = object, newdata = data$x, ...)
 }
