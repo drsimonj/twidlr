@@ -2,10 +2,15 @@ context("glmnet")
 
 
 test_that("glmnet", {
-  twidlr_fit <- twidlr::glmnet(mtcars, hp ~ .)
-  origin_fit <- glmnet::glmnet(model.matrix(hp ~ ., mtcars), mtcars$hp)
+  d <- datasets::mtcars
+  x <- model.matrix(hp ~ ., mtcars)[,-1]
+  y <- mtcars$hp
 
-  expect_equal(twidlr_fit$lambda, origin_fit$lambda)
-  expect_equal(predict(twidlr_fit, data = mtcars),
-               glmnet::predict.glmnet(origin_fit, newx = model.matrix(hp ~ ., mtcars)))
+  twidlr_fit <- twidlr::glmnet(mtcars, hp ~ .)
+  origin_fit <- glmnet::glmnet(x, y)
+
+  expect_equal(coef(twidlr_fit), coef(origin_fit))
+  expect_error(predict(twidlr_fit))
+  expect_equal(predict(twidlr_fit, d),
+               glmnet::predict.glmnet(origin_fit, newx = x))
 })
