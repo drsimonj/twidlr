@@ -63,6 +63,7 @@ lm.data.frame <- function(data, formula, ...) {
 #' @export predict.lm
 predict.lm <- function(object, data, ...) {
   check_alt_data(...)
+  if (missing(data)) stop("Please specify 'data'")
   stats::predict.lm(object, newdata = data, ...)
 }
 

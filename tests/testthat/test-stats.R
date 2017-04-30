@@ -1,6 +1,5 @@
 context("stats")
 
-
 test_that("t.test", {
   twidlr_fit <- twidlr::t.test(mtcars, hp ~ am)
   stats_fit  <- stats::t.test(hp ~ am, mtcars)
@@ -11,11 +10,14 @@ test_that("t.test", {
 
 
 test_that("lm", {
-  twidlr_fit <- twidlr::lm(mtcars, hp ~ .)
-  origin_fit <- stats::lm(hp ~ ., mtcars)
+  d <- datasets::mtcars
+
+  twidlr_fit <- twidlr::lm(d, hp ~ .)
+  origin_fit <- stats::lm(hp ~ ., d)
 
   expect_equal(coef(twidlr_fit), coef(origin_fit))
-  expect_equal(predict(twidlr_fit), stats::predict.lm(origin_fit))
+  expect_error(predict(twidlr_fit))
+  expect_equal(predict(twidlr_fit, d), stats::predict.lm(origin_fit))
 })
 
 
