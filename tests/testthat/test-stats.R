@@ -22,11 +22,14 @@ test_that("lm", {
 
 
 test_that("glm", {
-  twidlr_fit <- twidlr::glm(mtcars, vs ~ hp + wt, family = binomial())
-  origin_fit <- stats::glm(vs ~ hp + wt, family = binomial(), mtcars)
+  d <- datasets::mtcars
+
+  twidlr_fit <- twidlr::glm(d, vs ~ hp + wt, family = binomial())
+  origin_fit <- stats::glm(vs ~ hp + wt, family = binomial(), d)
 
   expect_equal(coef(twidlr_fit), coef(origin_fit))
-  expect_equal(predict(twidlr_fit), predict(origin_fit))
+  expect_error(predict(twidlr_fit))
+  expect_equal(predict(twidlr_fit, d), stats::predict.glm(origin_fit))
 })
 
 
