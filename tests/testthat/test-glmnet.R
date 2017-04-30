@@ -11,6 +11,6 @@ test_that("glmnet", {
 
   expect_equal(coef(twidlr_fit), coef(origin_fit))
   expect_error(predict(twidlr_fit))
-  expect_equal(predict(twidlr_fit, d),
+  expect_equal(predict(twidlr_fit, data = d),
                glmnet::predict.glmnet(origin_fit, newx = x))
 })

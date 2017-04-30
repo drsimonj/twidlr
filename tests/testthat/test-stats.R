@@ -17,7 +17,7 @@ test_that("lm", {
 
   expect_equal(coef(twidlr_fit), coef(origin_fit))
   expect_error(predict(twidlr_fit))
-  expect_equal(predict(twidlr_fit, d), stats::predict.lm(origin_fit))
+  expect_equal(predict(twidlr_fit, data = d), stats::predict.lm(origin_fit, newdata = d))
 })
 
 
@@ -29,7 +29,7 @@ test_that("glm", {
 
   expect_equal(coef(twidlr_fit), coef(origin_fit))
   expect_error(predict(twidlr_fit))
-  expect_equal(predict(twidlr_fit, d), stats::predict.glm(origin_fit))
+  expect_equal(predict(twidlr_fit, data = d), stats::predict.glm(origin_fit, newdata = d))
 })
 
 
