@@ -39,7 +39,7 @@ crq.data.frame <- function(data, formula, ...) {
 #' @rdname crq
 #' @export predict.crq
 predict.crq <- function(object, data, ...) {
-  if (hasArg(newdata)) data <- newdata
+  check_alt_data(...)
   quantreg::predict.crq(object, newdata = data, ...)
 }
 
@@ -80,7 +80,7 @@ rq.data.frame <- function(data, formula, ...) {
 #' @rdname rq
 #' @export predict.rq
 predict.rq <- function(object, data, ...) {
-  if (hasArg(newdata)) data <- newdata
+  check_alt_data(...)
   quantreg::predict.rq(object, newdata = data, ...)
 }
 
@@ -123,7 +123,7 @@ nlrq.data.frame <- function(data, formula, ...) {
 #' @rdname nlrq
 #' @export predict.nlrq
 predict.nlrq <- function(object, data, ...) {
-  if (hasArg(newdata)) data <- newdata
+  check_alt_data(...)
   quantreg::predict.nlrq(object, newdata = data, ...)
 }
 
