@@ -32,5 +32,6 @@ randomForest.data.frame <- function(data, formula, ...) {
 #' @export predict.randomForest
 predict.randomForest <- function(object, data, ...) {
   check_alt_data(...)
+  if (missing(data)) stop("Please specify 'data'")
   randomForest:::predict.randomForest(object, newdata = data, ...)
 }
