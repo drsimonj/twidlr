@@ -67,3 +67,45 @@ check_pkg <- function(pkg_name) {
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
 NULL
+
+#' Check if argument(s) are given as alternatives to another
+#'
+#' Check for certain arguments that, if present, will result in function
+#' producing an error and stopping the function if desired.
+#'
+#' @param ... Named arguments. Typically passed from another function.
+#' @param target String of variable for which alternatives may be present.
+#' @param alts Character vector of arguments that may act as alternatives to the target
+#' @param stop Boolean. If True, \code{\link[base]{stop}}() is called with an
+#'   error message. If False, \code{\link[base]{warning}}() is called with an
+#'   error message.
+#'
+#' @export
+#'
+#' @examples
+#' check_alt_arg(a = 10, target = "a", alts = c("b"))
+#' check_alt_arg(b = 10, target = "a", alts = c("b"))
+#' check_alt_arg(b = 10, target = "a", alts = c("b"), stop = FALSE)
+check_alt_arg <- function(..., target, alts, stop = TRUE) {
+  checks <- alts %in% names(c(...))
+  if (any(checks)) {
+    if (stop)
+      stop("Please specify '", target, "' instead of '", alts[checks], "'")
+
+    warning("", target, " is preferable to '", alts[checks], "'")
+  }
+}
+
+#' Wrapper for \code{\link{check_alt_arg}} with data defaults
+#'
+#' @export
+#'
+#' @examples
+#' check_alt_data(data = 10)
+#' \dontrun{
+#' check_alt_data(newx = 10)
+#' check_alt_data(newdata = 10)
+#' }
+check_alt_data <- function(..., target = "data", alts = c("newx", "newdata"), stop = TRUE) {
+  check_alt_arg(..., target = target, alts = alts, stop = stop)
+}
