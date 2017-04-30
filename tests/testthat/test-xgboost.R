@@ -1,13 +1,15 @@
 context("xgboost")
 
 test_that("xgboost", {
-  twidlr_fit <- twidlr::xgboost(mtcars, mpg ~ .*., nrounds = 20, verbose = 0, save_period = NULL)
+  d <- datasets::mtcars
+  x <- model.matrix(am ~ ., d)[,-1]
+  y <- mtcars$am
 
-  xs  <- model.matrix(mpg ~ .*., mtcars)
-  y <- mtcars$mpg
-  origin_fit <- xgboost::xgboost(data = xs, label = y, nrounds = 20, verbose = 0, save_period = NULL)
+  twidlr_fit <- twidlr::xgboost(d, am ~ ., nrounds = 5, verbose = 0, save_period = NULL)
+  origin_fit <- xgboost::xgboost(data = x, label = y, nrounds = 5, verbose = 0, save_period = NULL)
 
-  expect_equal(twidlr_fit$evaluation_log, origin_fit$evaluation_log)
-  expect_equal(predict(twidlr_fit, data = mtcars),
-               xgboost:::predict.xgb.Booster(origin_fit, newdata = xs))
+  expect_equal(twidlr_fit$raw, origin_fit$raw)
+  expect_error(predict(twidlr_fit))
+  expect_equal(predict(twidlr_fit, data = d),
+               xgboost:::predict.xgb.Booster(origin_fit, newdata = x))
 })
