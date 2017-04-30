@@ -20,4 +20,5 @@ Suggests: testthat,
     randomForest,
     lme4,
     quantreg
-Imports: magrittr
+Imports: magrittr,
+    lazyeval

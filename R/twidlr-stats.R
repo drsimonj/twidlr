@@ -19,13 +19,13 @@ t.test <- function(data, formula, ...) {
 }
 
 #' @export
-ttest.default <- function(data, formula, ...) {
+t.test.default <- function(data, formula, ...) {
   ttest.data.frame(as.data.frame(data), formula, ...)
 }
 
 #' @export
 ttest.data.frame <- function(data, formula, ...) {
-  stats::t.test(formula, data = data, ...)
+  eval_fun(stats:::t.test.formula, formula = formula, data = data, ...)
 }
 
 #' data.frame-first formula-second method for \code{\link[stats]{lm}}

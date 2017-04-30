@@ -25,9 +25,9 @@ xgboost.default <- function(data, formula, ...) {
 
 #' @export
 xgboost.data.frame <- function(data, formula, ...) {
-  dat <- model_as_xy(data, formula)
-  object <- xgboost::xgboost(data = dat$x, label = dat$y, ...)
-  attr(object, "formula") <- formula
+  data <- model_as_xy(data, formula)
+  object <- eval_fun(xgboost::xgboost, data = data$x, label = data$y, ...)
+  attr(object, "formula") <- formula # For predict
   object
 }
 
