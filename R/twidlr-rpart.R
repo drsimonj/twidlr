@@ -32,5 +32,6 @@ rpart.data.frame <- function(data, formula, ...) {
 #' @export predict.rpart
 predict.rpart <- function(object, data, ...) {
   check_alt_data(...)
+  if (missing(data)) stop("Please specify 'data'")
   rpart:::predict.rpart(object, newdata = data, ...)
 }
