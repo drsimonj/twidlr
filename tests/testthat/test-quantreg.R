@@ -10,34 +10,39 @@ test_that("crq", {
   dat <- data.frame(y = y,x = x,c = c,d = d)
   rm(x,y,c,d)
 
-  twidlr_fit <- twidlr::crq(dat,survival::Surv(pmax(y,c), d, type = "left") ~ x,method = "Portnoy")
-  origin_fit <- quantreg::crq(survival::Surv(pmax(y,c), d, type = "left") ~ x, data = dat,method = "Portnoy")
+  twidlr_fit <- twidlr::crq(dat, survival::Surv(pmax(y,c), d, type = "left") ~ x,method = "Portnoy")
+  origin_fit <- quantreg::crq(survival::Surv(pmax(y,c), d, type = "left") ~ x, data = dat, method = "Portnoy")
 
   expect_equal(coef(twidlr_fit), coef(origin_fit))
-  expect_equal(predict(twidlr_fit), quantreg::predict.crq(origin_fit))
+  expect_error(predict(twidlr_fit))
+  expect_equal(predict(twidlr_fit, data = dat), quantreg::predict.crq(origin_fit, newdata = dat))
 })
 
 
 test_that("nlrq", {
-  Dat <- NULL
-  Dat$x <- rep(1:25, 20)
+  dat <- NULL
+  dat$x <- rep(1:25, 20)
   set.seed(1)
-  Dat$y <- SSlogis(Dat$x, 10, 12, 2) * rnorm(500, 1, 0.1)
+  dat$y <- SSlogis(dat$x, 10, 12, 2) * rnorm(500, 1, 0.1)
 
-  twidlr_fit <- twidlr::nlrq(Dat,y ~ SSlogis(x, Asym, mid, scal))
-  origin_fit <- quantreg::nlrq(y ~ SSlogis(x, Asym, mid, scal),Dat)
+  twidlr_fit <- twidlr::nlrq(dat, y ~ SSlogis(x, Asym, mid, scal))
+  origin_fit <- quantreg::nlrq(y ~ SSlogis(x, Asym, mid, scal), dat)
 
   expect_equal(coef(twidlr_fit), coef(origin_fit))
-  expect_equal(predict(twidlr_fit), quantreg::predict.nlrq(origin_fit))
+  expect_error(predict(twidlr))
+  expect_equal(predict(twidlr_fit, data = dat), quantreg::predict.nlrq(origin_fit, newdata = dat))
 })
 
 
 test_that("rq", {
-  twidlr_fit <- twidlr::rq(mtcars, hp ~ mpg + cyl)
-  origin_fit <- quantreg::rq(hp ~ mpg + cyl,tau = 0.5,mtcars)
+  d <- datasets::mtcars
+
+  twidlr_fit <- twidlr::rq(d, hp ~ mpg + cyl, tau = 0.4)
+  origin_fit <- quantreg::rq(hp ~ mpg + cyl, tau = 0.4, d)
 
   expect_equal(coef(twidlr_fit), coef(origin_fit))
-  expect_equal(predict(twidlr_fit), quantreg::predict.rq(origin_fit))
+  expect_error(predict(twidlr_fit))
+  expect_equal(predict(twidlr_fit, data = d), quantreg::predict.rq(origin_fit, newdata = d))
 })
 
 

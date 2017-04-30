@@ -40,6 +40,7 @@ crq.data.frame <- function(data, formula, ...) {
 #' @export predict.crq
 predict.crq <- function(object, data, ...) {
   check_alt_data(...)
+  if (missing(data)) stop("Please specify 'data'")
   quantreg::predict.crq(object, newdata = data, ...)
 }
 
@@ -81,6 +82,7 @@ rq.data.frame <- function(data, formula, ...) {
 #' @export predict.rq
 predict.rq <- function(object, data, ...) {
   check_alt_data(...)
+  if (missing(data)) stop("Please specify 'data'")
   quantreg::predict.rq(object, newdata = data, ...)
 }
 
@@ -124,6 +126,7 @@ nlrq.data.frame <- function(data, formula, ...) {
 #' @export predict.nlrq
 predict.nlrq <- function(object, data, ...) {
   check_alt_data(...)
+  if (missing(data)) stop("Please specify 'data'")
   quantreg::predict.nlrq(object, newdata = data, ...)
 }
 

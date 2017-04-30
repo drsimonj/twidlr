@@ -33,15 +33,7 @@ glmnet.data.frame <- function(data, formula, ...) {
 #' @export predict.glmnet
 predict.glmnet <- function(object, data, ...) {
   check_alt_data(...)
-
-  if (missing(data)) {
-    if (hasArg(type) && type %in% c("coefficients", "nonzero")) {
-      return (glmnet::predict.glmnet(object, ...))
-    } else {
-      stop ("You need to supply a value for 'data'")
-    }
-  }
-
+  if (missing(data)) stop("Please specify 'data'")
   data <- model_as_xy(data, attr(object, "formula"))$x
   glmnet::predict.glmnet(object, newx = data, ...)
 }
