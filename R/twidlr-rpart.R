@@ -31,6 +31,6 @@ rpart.data.frame <- function(data, formula, ...) {
 #' @rdname rpart
 #' @export predict.rpart
 predict.rpart <- function(object, data, ...) {
-  if (hasArg(newdata)) data <- newdata
+  check_alt_data(...)
   rpart:::predict.rpart(object, newdata = data, ...)
 }

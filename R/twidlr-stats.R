@@ -62,7 +62,7 @@ lm.data.frame <- function(data, formula, ...) {
 #' @rdname lm
 #' @export predict.lm
 predict.lm <- function(object, data, ...) {
-  if (hasArg(newdata)) data <- newdata
+  check_alt_data(...)
   stats::predict.lm(object, newdata = data, ...)
 }
 
@@ -102,7 +102,7 @@ glm.data.frame <- function(data, formula, ...) {
 #' @rdname glm
 #' @export predict.glm
 predict.glm <- function(object, data, ...) {
-  if (hasArg(newdata)) data <- newdata
+  check_alt_data(...)
   stats::predict.glm(object, newdata = data, ...)
 }
 

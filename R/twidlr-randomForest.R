@@ -31,6 +31,6 @@ randomForest.data.frame <- function(data, formula, ...) {
 #' @rdname randomForest
 #' @export predict.randomForest
 predict.randomForest <- function(object, data, ...) {
-  if (hasArg(newdata)) data <- newdata
+  check_alt_data(...)
   randomForest:::predict.randomForest(object, newdata = data, ...)
 }

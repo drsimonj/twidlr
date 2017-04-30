@@ -32,9 +32,7 @@ glmnet.data.frame <- function(data, formula, ...) {
 #' @rdname glmnet
 #' @export predict.glmnet
 predict.glmnet <- function(object, data, ...) {
-  if (hasArg(newx)) {
-    return (glmnet::predict.glmnet(object, newx = newx, ...))
-  }
+  check_alt_data(...)
 
   if (missing(data)) {
     if (hasArg(type) && type %in% c("coefficients", "nonzero")) {
