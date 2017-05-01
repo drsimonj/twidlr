@@ -39,8 +39,7 @@ crq.data.frame <- function(data, formula, ...) {
 #' @rdname crq
 #' @export predict.crq
 predict.crq <- function(object, data, ...) {
-  check_alt_data(...)
-  if (missing(data)) stop("Please specify 'data'")
+  data <- predict_checks(data = data, ...)
   quantreg::predict.crq(object, newdata = data, ...)
 }
 
@@ -81,8 +80,7 @@ rq.data.frame <- function(data, formula, ...) {
 #' @rdname rq
 #' @export predict.rq
 predict.rq <- function(object, data, ...) {
-  check_alt_data(...)
-  if (missing(data)) stop("Please specify 'data'")
+  data <- predict_checks(data = data, ...)
   quantreg::predict.rq(object, newdata = data, ...)
 }
 
@@ -125,8 +123,7 @@ nlrq.data.frame <- function(data, formula, ...) {
 #' @rdname nlrq
 #' @export predict.nlrq
 predict.nlrq <- function(object, data, ...) {
-  check_alt_data(...)
-  if (missing(data)) stop("Please specify 'data'")
+  data <- predict_checks(data = data, ...)
   quantreg::predict.nlrq(object, newdata = data, ...)
 }
 
@@ -169,7 +166,6 @@ predict.nlrq <- function(object, data, ...) {
 #' #' @rdname rqss
 #' #' @export predict.rqss
 #' predict.rqss <- function(object, data, ...) {
-#'   if (hasArg(newdata)) data <- newdata
-#'   if (missing(data)) stop("argument 'data' is missing, with no default")
+#'   data <- predict_checks(data = data, ...)
 #'   quantreg::predict.rqss(object, newdata = data, ...)
 #' }

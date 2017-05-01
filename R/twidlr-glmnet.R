@@ -32,8 +32,7 @@ glmnet.data.frame <- function(data, formula, ...) {
 #' @rdname glmnet
 #' @export predict.glmnet
 predict.glmnet <- function(object, data, ...) {
-  check_alt_data(...)
-  if (missing(data)) stop("Please specify 'data'")
+  data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
   glmnet::predict.glmnet(object, newx = data, ...)
 }

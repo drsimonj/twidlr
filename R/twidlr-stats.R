@@ -25,7 +25,7 @@ t.test.default <- function(data, formula, ...) {
 
 #' @export
 ttest.data.frame <- function(data, formula, ...) {
-  eval_fun(stats:::t.test.formula, formula = formula, data = data, ...)
+  stats:::t.test.formula(formula = formula, data = data, ...)
 }
 
 #' data.frame-first formula-second method for \code{\link[stats]{lm}}
@@ -62,8 +62,7 @@ lm.data.frame <- function(data, formula, ...) {
 #' @rdname lm
 #' @export predict.lm
 predict.lm <- function(object, data, ...) {
-  check_alt_data(...)
-  if (missing(data)) stop("Please specify 'data'")
+  data <- predict_checks(data = data, ...)
   stats::predict.lm(object, newdata = data, ...)
 }
 
@@ -103,8 +102,7 @@ glm.data.frame <- function(data, formula, ...) {
 #' @rdname glm
 #' @export predict.glm
 predict.glm <- function(object, data, ...) {
-  check_alt_data(...)
-  if (missing(data)) stop("Please specify 'data'")
+  data <- predict_checks(data = data, ...)
   stats::predict.glm(object, newdata = data, ...)
 }
 
