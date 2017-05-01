@@ -12,16 +12,20 @@ knitr::opts_chunk$set(
 )
 ```
 
-# twidlr: data.frame-first formula-second modelling <img src="man/figures/logo.png" align="right" />
-
+# twidlr: consistent data.frame and formula API for models <img src="man/figures/logo.png" align="right" />
 
 ## Overview
 
-twidlr is an R package that exposes **data.frame-first formula-second** versions of modelling functions. All modelling functions exposed by twidlr are of the following format:
+twidlr is an R package that exposes a consistent API for model functions and their corresponding predict methods such that they are specified as:
 
-> model_function(data = data.frame, formula = y ~ x's, ...)
+```{r, eval = F}
+fit <- model(data, formula, ...)
+predict(fit, data, ...)
+```
 
-twidlr gets its name from the "tilde", often called a "twiddle", used in R formulas.
+Where "data" is a **required** data.frame (or able to be coerced to one) and "formula" describes the model to be fitted.
+
+twidlr gets its name from the "twiddle" used in R formulas.
 
 ## Installation
 
@@ -34,19 +38,24 @@ devtools::install_github("drsimonj/twidlr")
 
 ## Usage
 
-`library(twidlr)` will expose modelling functions that you're already familiar with, but such that they accept a data frame, formula, and additional arguments!
+`library(twidlr)` exposes model functions that you're already familiar with, but such that they accept a data.frame first, formula second, and then additional arguments. A robust method to `predict` data is also exposed.
 
 For example, a typical linear model would be `lm(hp ~ mpg * wt, mtcars, ...)`. Once `twidlr` is loaded, the same model would be run via `lm(mtcars, hp ~ mpg * wt, ...)`.
 
 ## Motivation
 
-- **Consistent API** for modelling functions (helping to improve the generality of tidy modelling packages like [piplearner](https://github.com/drsimonj/pipelearner))
+Modelling in R is messy! Some models take formulas and data frames while others require matrices and vectors. The same can be said of corresponding `predict()` methods, which can also be impure, returning unexpected or inconsistent results.
+
+twidlr seeks to overcome these problems be providing:
+
+- **Consistent API** for model functions and their corresponding `predict` methods (helping to improve the generality of tidy modelling packages like [piplearner](https://github.com/drsimonj/pipelearner))
+- **Pure and available predictions** by way of `predict` being made available for all methods (including unsupervised algorithms like kmeans) and making "data" a required argument
 - **[Tidyverse](http://tidyverse.org/) philosophy** by working with data frames and being pipeable such as `mtcars %>% lm(hp ~ wt)`
 - **Leverage formula operators** where they may be valid but not originally available. For example, to specify select variables or include additional terms like interactions and dummy-coded variables with syntax such as `glmnet(iris, Sepal.Width ~ Petal.Width * Petal.Length + Species)`.
 
 ## twidlr models
 
-data.frame-first formula-second model functions exposed by twidlr:
+Model functions exposed by twidlr:
 
 ```{r, echo = F}
 x <- data.frame(rbind(
