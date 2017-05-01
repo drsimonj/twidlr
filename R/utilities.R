@@ -80,13 +80,11 @@ NULL
 #'   error message. If False, \code{\link[base]{warning}}() is called with an
 #'   error message.
 #'
-#' @export
-#'
 #' @examples
-#' check_alt_arg(a = 10, target = "a", alts = c("b"))
-#' check_alt_arg(b = 10, target = "a", alts = c("b"))
-#' check_alt_arg(b = 10, target = "a", alts = c("b"), stop = FALSE)
-check_alt_arg <- function(..., target, alts, stop = TRUE) {
+#' check_alt_args(a = 10, target = "a", alts = c("b"))
+#' check_alt_args(b = 10, target = "a", alts = c("b"))
+#' check_alt_args(b = 10, target = "a", alts = c("b"), stop = FALSE)
+check_alt_args <- function(..., target, alts, stop = TRUE) {
   checks <- alts %in% names(c(...))
   if (any(checks)) {
     if (stop)
@@ -107,5 +105,17 @@ check_alt_arg <- function(..., target, alts, stop = TRUE) {
 #' check_alt_data(newdata = 10)
 #' }
 check_alt_data <- function(..., target = "data", alts = c("newx", "newdata"), stop = TRUE) {
-  check_alt_arg(..., target = target, alts = alts, stop = stop)
+  check_alt_args(..., target = target, alts = alts, stop = stop)
+}
+
+#' Run checks for twidlr predict functions and invisibly return 'data' coerced
+#' to a data frame
+predict_checks <- function(data, ...) {
+  # Check that 'data' exists and alternatives do not
+  if (missing(data)) stop("'data' is missing")
+  check_alt_args(..., target = "data", alts = c("newx", "newdata"), stop = TRUE)
+
+  # Coerce data to data frame
+  data <- as.data.frame(data)
+  invisible(data)
 }
