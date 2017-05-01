@@ -50,4 +50,12 @@ test_that("kmeans", {
 
   expect_equal(twidlr::kmeans(d, ~ Sepal.Length + Sepal.Width, centers = 3)$totss,
                stats::kmeans(d[c("Sepal.Length", "Sepal.Width")], centers = 3)$totss)
+
+
+  set.seed(170501)
+  twidlr_fit <- twidlr::kmeans(d, centers = 3)
+  set.seed(170501)
+  origin_fit <- stats::kmeans(d, centers = 3)
+
+  expect_true(all(predict(twidlr_fit, d) == origin_fit$cluster))
 })
