@@ -34,8 +34,7 @@ lmer.data.frame <- function(data, formula, ...) {
 #' @rdname lmer
 #' @export predict.merMod
 predict.merMod <- function(object, data, ...) {
-  check_alt_data(...)
-  if (missing(data)) stop("Please specify 'data'")
+  data <- predict_checks(data = data, ...)
   lme4:::predict.merMod(object, newdata = data, ...)
 }
 

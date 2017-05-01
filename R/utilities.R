@@ -46,8 +46,6 @@ model_as_xy <- function(data, formula) {
 #'
 #' @param pkg_name Character of the package name to check
 #'
-#' @export
-#'
 #' @examples
 #' check_pkg("stats")
 #' check_pkg("dplyr")
@@ -92,20 +90,6 @@ check_alt_args <- function(..., target, alts, stop = TRUE) {
 
     warning("", target, " is preferable to '", alts[checks], "'")
   }
-}
-
-#' Wrapper for \code{\link{check_alt_arg}} with data defaults
-#'
-#' @export
-#'
-#' @examples
-#' check_alt_data(data = 10)
-#' \dontrun{
-#' check_alt_data(newx = 10)
-#' check_alt_data(newdata = 10)
-#' }
-check_alt_data <- function(..., target = "data", alts = c("newx", "newdata"), stop = TRUE) {
-  check_alt_args(..., target = target, alts = alts, stop = stop)
 }
 
 #' Run checks for twidlr predict functions and invisibly return 'data' coerced

@@ -34,8 +34,7 @@ xgboost.data.frame <- function(data, formula, ...) {
 #' @rdname xgboost
 #' @export predict.xgb.Booster
 predict.xgb.Booster <- function(object, data, ...) {
-  check_alt_data(...)
-  if (missing(data)) stop("Please specify 'data'")
+  data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
   xgboost:::predict.xgb.Booster(object, newdata = data, ...)
 }

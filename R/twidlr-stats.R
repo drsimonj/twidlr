@@ -102,8 +102,7 @@ glm.data.frame <- function(data, formula, ...) {
 #' @rdname glm
 #' @export predict.glm
 predict.glm <- function(object, data, ...) {
-  check_alt_data(...)
-  if (missing(data)) stop("Please specify 'data'")
+  data <- predict_checks(data = data, ...)
   stats::predict.glm(object, newdata = data, ...)
 }
 
