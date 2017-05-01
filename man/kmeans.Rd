@@ -2,9 +2,12 @@
 % Please edit documentation in R/twidlr-stats.R
 \name{kmeans}
 \alias{kmeans}
+\alias{predict.kmeans}
 \title{data.frame-first formula-second method for \code{\link[stats]{kmeans}}}
 \usage{
 kmeans(data, formula = ~., ...)
+
+\method{predict}{kmeans}(object, data, ...)
 }
 \arguments{
 \item{data}{Data frame containing the variables in the model}
@@ -13,6 +16,8 @@ kmeans(data, formula = ~., ...)
 all variables in "data" will be included.}
 
 \item{...}{Additional arguments to pass to model function}
+
+\item{object}{Fitted model}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to

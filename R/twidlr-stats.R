@@ -160,5 +160,24 @@ kmeans.default <- function(data, formula = ~., ...) {
 #' @export
 kmeans.data.frame <- function(data, formula = ~., ...) {
   x <- model_as_xy(data, formula)$x
-  stats::kmeans(x = x, ...)
+  object <- stats::kmeans(x = x, ...)
+  attr(object, "formula") <- formula
+  object
+}
+
+#' @rdname kmeans
+#' @export predict.kmeans
+predict.kmeans <- function(object, data, ...) {
+  data <- predict_checks(data = data, ...)
+  data <- model_as_xy(data, attr(object, "formula"))$x
+
+  centers   <- object[["centers"]]
+  n_centers <- nrow(centers)
+  distances <- matrix(0, nrow = nrow(data), ncol = n_centers)
+
+  for (i in seq(n_centers)) {
+    distances[,i] <- sqrt(rowSums(t(t(data) - centers[i,])^2))
+  }
+
+  apply(distances, 1, which.min)
 }
