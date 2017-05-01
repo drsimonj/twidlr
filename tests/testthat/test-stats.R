@@ -20,6 +20,15 @@ test_that("lm", {
   expect_equal(predict(twidlr_fit, data = d), stats::predict.lm(origin_fit, newdata = d))
 })
 
+test_that("extra checks for predict()", {
+  d <- datasets::mtcars
+
+  twidlr_fit <- twidlr::lm(d, hp ~ .)
+
+  expect_error(predict(twidlr_fit))
+  expect_length(predict(twidlr_fit, data = as.matrix(d)), nrow(d))
+  expect_error(predict(twidlr_fit, data = d, newdata = 10))
+})
 
 test_that("glm", {
   d <- datasets::mtcars
