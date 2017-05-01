@@ -4,12 +4,13 @@
 \alias{kmeans}
 \title{data.frame-first formula-second method for \code{\link[stats]{kmeans}}}
 \usage{
-kmeans(data, formula, ...)
+kmeans(data, formula = ~., ...)
 }
 \arguments{
 \item{data}{Data frame containing the variables in the model}
 
-\item{formula}{One-sided \code{\link[stats]{formula}}}
+\item{formula}{One-sided \code{\link[stats]{formula}} (optional). If omitted,
+all variables in "data" will be included.}
 
 \item{...}{Additional arguments to pass to model function}
 }
@@ -19,7 +20,7 @@ This function passes a data.frame, formula, and additional arguments to
 }
 \examples{
 # Standard kmeans
-kmeans(iris, ~., centers = 3)
+kmeans(iris, centers = 3)
 
 # formula interface can be used to select certain variables
 kmeans(iris, ~ Petal.Width + Sepal.Width, centers = 3)

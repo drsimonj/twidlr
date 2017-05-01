@@ -43,6 +43,11 @@ test_that("glm", {
 
 
 test_that("kmeans", {
-  expect_equal(names(twidlr::kmeans(mtcars, ~ ., centers = 3)$cluster),
-               names(stats::kmeans(mtcars, centers = 3)$cluster))
+  d <- datasets::iris[,-5]
+
+  expect_equal(twidlr::kmeans(d, centers = 3)$totss,
+               stats::kmeans(d, centers = 3)$totss)
+
+  expect_equal(twidlr::kmeans(d, ~ Sepal.Length + Sepal.Width, centers = 3)$totss,
+               stats::kmeans(d[c("Sepal.Length", "Sepal.Width")], centers = 3)$totss)
 })

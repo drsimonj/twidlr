@@ -114,12 +114,13 @@ predict.glm <- function(object, data, ...) {
 #' @seealso \code{\link[stats]{kmeans}}
 #'
 #' @inheritParams twidlr_defaults
-#' @param formula One-sided \code{\link[stats]{formula}}
+#' @param formula One-sided \code{\link[stats]{formula}} (optional). If omitted,
+#'   all variables in "data" will be included.
 #' @export
 #'
 #' @examples
 #' # Standard kmeans
-#' kmeans(iris, ~., centers = 3)
+#' kmeans(iris, centers = 3)
 #'
 #' # formula interface can be used to select certain variables
 #' kmeans(iris, ~ Petal.Width + Sepal.Width, centers = 3)
@@ -146,18 +147,18 @@ predict.glm <- function(object, data, ...) {
 #'
 #' # Help page for function being twiddled
 #' ?stats::kmeans
-kmeans <- function(data, formula, ...) {
+kmeans <- function(data, formula = ~., ...) {
   check_pkg("stats")
   UseMethod("kmeans")
 }
 
 #' @export
-kmeans.default <- function(data, formula, ...) {
+kmeans.default <- function(data, formula = ~., ...) {
   kmeans.data.frame(as.data.frame(data), formula, ...)
 }
 
 #' @export
-kmeans.data.frame <- function(data, formula, ...) {
+kmeans.data.frame <- function(data, formula = ~., ...) {
   x <- model_as_xy(data, formula)$x
   stats::kmeans(x = x, ...)
 }
