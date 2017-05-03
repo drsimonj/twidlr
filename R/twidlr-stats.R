@@ -220,3 +220,33 @@ predict.prcomp <- function(object, data, ...) {
   stats:::predict.prcomp(object = object, newdata = data, ...)
 }
 
+#' data.frame-first formula-second method for \code{\link[stats]{aov}}
+#'
+#' This function passes a data.frame, formula, and additional arguments to
+#' \code{\link[stats]{aov}}.
+#'
+#' @seealso \code{\link[stats]{aov}}
+#'
+#' @inheritParams twidlr_defaults
+#' @export
+#'
+#' @examples
+#' fit <- aov(mtcars, hp ~ am * cyl)
+#' summary(fit)
+#' predict(fit, mtcars)
+aov <- function(data, formula, ...) {
+  check_pkg("stats")
+  UseMethod("aov")
+}
+
+#' @export
+aov.default <- function(data, formula, ...) {
+  aov.data.frame(as.data.frame(data), formula, ...)
+}
+
+#' @export
+aov.data.frame <- function(data, formula, ...) {
+  stats::aov(formula = formula, data = data, ...)
+}
+
+# predict method for aov is predict.lm
