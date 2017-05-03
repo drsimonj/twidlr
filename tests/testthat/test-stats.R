@@ -74,3 +74,14 @@ test_that("prcomp", {
   expect_equal(predict(twidlr_fit, d),
                stats:::predict.prcomp(origin_fit, as.data.frame(model.matrix(~.*., d))[-1L]))
 })
+
+test_that("aov", {
+  d <- datasets::mtcars
+
+  twidlr_fit <- twidlr::aov(d, hp ~ am * vs)
+  origin_fit <- stats::lm(hp ~ am * vs, d)
+
+  expect_equal(coef(twidlr_fit), coef(origin_fit))
+  expect_error(predict(twidlr_fit))
+  expect_equal(predict(twidlr_fit, data = d), stats::predict.lm(origin_fit, newdata = d))
+})
