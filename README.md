@@ -51,23 +51,15 @@ twidlr models
 
 Model functions exposed by twidlr:
 
-| Package      | Function     |
-|:-------------|:-------------|
-| glmnet       | glmnet       |
-| lme4         | glmer        |
-| lme4         | lmer         |
-| quantreg     | crq          |
-| quantreg     | nlrq         |
-| quantreg     | rq           |
-| quantreg     | rqss         |
-| randomForest | randomForest |
-| rpart        | rpart        |
-| stats        | glm          |
-| stats        | kmeans       |
-| stats        | lm           |
-| stats        | prcomp       |
-| stats        | t.test       |
-| xgboost      | xgboost      |
+| Package      | Functions                       |
+|:-------------|:--------------------------------|
+| glmnet       | glmnet                          |
+| lme4         | glmer, lmer                     |
+| quantreg     | crq, nlrq, rq, rqss             |
+| randomForest | randomForest                    |
+| rpart        | rpart                           |
+| stats        | glm, kmeans, lm, prcomp, t.test |
+| xgboost      | xgboost                         |
 
 Contributing
 ------------
