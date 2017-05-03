@@ -23,6 +23,12 @@ variables}
 This function passes a data.frame, formula, and additional arguments to
 \code{\link[stats]{prcomp}}.
 }
+\examples{
+prcomp(mtcars)
+
+fit <- prcomp(mtcars, ~ .*.)
+predict(fit, mtcars[1:5,])
+}
 \seealso{
 \code{\link[stats]{prcomp}}
 }

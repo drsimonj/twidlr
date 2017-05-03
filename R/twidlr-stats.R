@@ -195,6 +195,10 @@ predict.kmeans <- function(object, data, ...) {
 #' @export
 #'
 #' @examples
+#' prcomp(mtcars)
+#'
+#' fit <- prcomp(mtcars, ~ .*.)
+#' predict(fit, mtcars[1:5,])
 prcomp <- function(data, formula = ~., ...) {
   check_pkg("stats")
   UseMethod("prcomp")
