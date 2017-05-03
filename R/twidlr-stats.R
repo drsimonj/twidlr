@@ -181,3 +181,42 @@ predict.kmeans <- function(object, data, ...) {
 
   apply(distances, 1, which.min)
 }
+
+#' data.frame-first formula-second method for \code{\link[stats]{prcomp}}
+#'
+#' This function passes a data.frame, formula, and additional arguments to
+#' \code{\link[stats]{prcomp}}.
+#'
+#' @seealso \code{\link[stats]{prcomp}}
+#'
+#' @inheritParams twidlr_defaults
+#' @param formula a formula with no response variable, referring only to numeric
+#'   variables
+#' @export
+#'
+#' @examples
+prcomp <- function(data, formula = ~., ...) {
+  check_pkg("stats")
+  UseMethod("prcomp")
+}
+
+#' @export
+prcomp.default <- function(data, formula = ~., ...) {
+  prcomp.data.frame(as.data.frame(data), formula, ...)
+}
+
+#' @export
+prcomp.data.frame <- function(data, formula = ~., ...) {
+  object <- stats:::prcomp.formula(formula = formula, data = data, ...)
+  attr(object, "formula") <- formula
+  object
+}
+
+#' @rdname prcomp
+#' @export predict.prcomp
+predict.prcomp <- function(object, data, ...) {
+  data <- predict_checks(data = data, ...)
+  data <- model_as_xy(data, attr(object, "formula"))$x
+  stats:::predict.prcomp(object = object, newdata = data, ...)
+}
+

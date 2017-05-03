@@ -65,6 +65,7 @@ Model functions exposed by twidlr:
 | stats        | glm          |
 | stats        | kmeans       |
 | stats        | lm           |
+| stats        | prcomp       |
 | stats        | t.test       |
 | xgboost      | xgboost      |
 

@@ -59,3 +59,18 @@ test_that("kmeans", {
 
   expect_true(all(predict(twidlr_fit, d) == origin_fit$cluster))
 })
+
+test_that("prcomp", {
+  d <- datasets::mtcars
+
+  expect_equal(twidlr::prcomp(d)$rotation,
+               stats::prcomp(d)$rotation)
+
+  twidlr_fit <- twidlr::prcomp(d, ~ .*.)
+  origin_fit <- stats::prcomp(~.*., d)
+
+  expect_equal(twidlr_fit$rotation, origin_fit$rotation)
+
+  expect_equal(predict(twidlr_fit, d),
+               stats:::predict.prcomp(origin_fit, as.data.frame(model.matrix(~.*., d))[-1L]))
+})
