@@ -53,7 +53,7 @@ Model functions exposed by twidlr:
 
 | Package      | Functions                            |
 |:-------------|:-------------------------------------|
-| glmnet       | glmnet                               |
+| glmnet       | cv.glmnet, glmnet                    |
 | lme4         | glmer, lmer                          |
 | quantreg     | crq, nlrq, rq, rqss                  |
 | randomForest | randomForest                         |

@@ -3,7 +3,7 @@
 * Added data.frame-first formula-second functions for:
     * `stats::aov, t.test, lm, glm, kmeans, prcomp`
     * `xgboost::xgboost`
-    * `glmnet::glmnet`
+    * `glmnet::glmnet, cv.glmnet`
     * `rpart::rpart`
     * `randomForest::randomForest`
     * `lme4::lmer`

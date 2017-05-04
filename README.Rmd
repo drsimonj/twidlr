@@ -77,7 +77,8 @@ x <- data.frame(rbind(
   c("stats", "kmeans"),
   c("stats", "t.test"),
   c("stats", "prcomp"),
-  c("stats", "aov")
+  c("stats", "aov"),
+  c("glmnet", "cv.glmnet")
   
   ## < ---------------------------------------------------------------
 ))
