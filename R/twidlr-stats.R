@@ -10,21 +10,28 @@
 #'
 #' @examples
 #' t.test(iris[1:100,], Petal.Width ~ Species)
-#'
-#' # Help page for function being twiddled
-#' ?stats::t.test
 t.test <- function(data, formula, ...) {
+  ttest(data, formula, ...)
+}
+#' @export t.test
+NULL
+
+#' S3 generic method for t.test
+#'
+#' @inheritParams twidlr_defaults
+#' @export
+ttest <- function(data, formula, ...) {
   check_pkg("stats")
-  UseMethod("t.test")
+  UseMethod("ttest")
 }
 
 #' @export
-t.test.default <- function(data, formula, ...) {
-  t.test.data.frame(as.data.frame(data), formula, ...)
+ttest.default <- function(data, formula, ...) {
+  ttest.data.frame(as.data.frame(data), formula, ...)
 }
 
 #' @export
-t.test.data.frame <- function(data, formula, ...) {
+ttest.data.frame <- function(data, formula, ...) {
   stats:::t.test.formula(formula = formula, data = data, ...)
 }
 

@@ -4,7 +4,7 @@
 \alias{t.test}
 \title{data.frame-first formula-second method for \code{\link[stats]{t.test}}}
 \usage{
-t.test(data, formula, ...)
+\method{t}{test}(data, formula, ...)
 }
 \arguments{
 \item{data}{Data frame containing the variables in the model}
@@ -19,9 +19,6 @@ This function passes a data.frame, formula, and additional arguments to
 }
 \examples{
 t.test(iris[1:100,], Petal.Width ~ Species)
-
-# Help page for function being twiddled
-?stats::t.test
 }
 \seealso{
 \code{\link[stats]{t.test}}
