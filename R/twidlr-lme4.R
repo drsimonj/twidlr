@@ -35,7 +35,8 @@ predict.merMod <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   lme4:::predict.merMod(object, newdata = data, ...)
 }
-
+#' @export predict.merMod
+NULL
 
 #' data.frame-first formula-second method for \code{\link[lme4]{glmer}}
 #'

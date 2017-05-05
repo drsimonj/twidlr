@@ -17,11 +17,11 @@ test_that("glmnet", {
 
 test_that("cv.glmnet", {
   d <- datasets::mtcars
-  x <- model.matrix(hp ~ ., mtcars)[,-1]
+  x <- model.matrix(hp ~ .*., mtcars)[,-1]
   y <- mtcars$hp
 
   set.seed(170504)
-  twidlr_fit <- twidlr::cv.glmnet(mtcars, hp ~ .)
+  twidlr_fit <- twidlr::cv.glmnet(mtcars, hp ~ .*.)
   set.seed(170504)
   origin_fit <- glmnet::cv.glmnet(x, y)
 

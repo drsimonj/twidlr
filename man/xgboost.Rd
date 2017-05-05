@@ -23,10 +23,8 @@ This function passes a data.frame, formula, and additional arguments to
 \code{\link[xgboost]{xgboost}}.
 }
 \examples{
-xgboost(mtcars, hp ~ ., nrounds = 10)
-
-# Help page for function being twiddled
-?xgboost::xgboost
+fit <- xgboost(mtcars, hp ~ ., nrounds = 10, save_period = NULL)
+predict(fit, mtcars)
 }
 \seealso{
 \code{\link[xgboost]{xgboost}}

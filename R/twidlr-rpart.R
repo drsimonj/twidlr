@@ -34,3 +34,5 @@ predict.rpart <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   rpart:::predict.rpart(object, newdata = data, ...)
 }
+#' @export predict.rpart
+NULL

@@ -9,10 +9,8 @@
 #' @export
 #'
 #' @examples
-#' xgboost(mtcars, hp ~ ., nrounds = 10)
-#'
-#' # Help page for function being twiddled
-#' ?xgboost::xgboost
+#' fit <- xgboost(mtcars, hp ~ ., nrounds = 10, save_period = NULL)
+#' predict(fit, mtcars)
 xgboost <- function(data, formula, ...) {
   check_pkg("xgboost")
   UseMethod("xgboost")
@@ -38,3 +36,5 @@ predict.xgb.Booster <- function(object, data, ...) {
   data <- model_as_xy(data, attr(object, "formula"))$x
   xgboost:::predict.xgb.Booster(object, newdata = data, ...)
 }
+#' @export predict.xgb.Booster
+NULL

@@ -42,6 +42,8 @@ predict.crq <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   quantreg::predict.crq(object, newdata = data, ...)
 }
+#' @export predict.crq
+NULL
 
 #' data.frame-first formula-second method for \code{\link[quantreg]{rq}}
 #'
@@ -83,6 +85,8 @@ predict.rq <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   quantreg::predict.rq(object, newdata = data, ...)
 }
+#' @export predict.rq
+NULL
 
 #' data.frame-first formula-second method for \code{\link[quantreg]{nlrq}}
 #'

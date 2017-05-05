@@ -65,6 +65,8 @@ predict.lm <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   stats::predict.lm(object, newdata = data, ...)
 }
+#' @export predict.lm
+NULL
 
 
 #' data.frame-first formula-second method for \code{\link[stats]{glm}}
@@ -105,6 +107,8 @@ predict.glm <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   stats::predict.glm(object, newdata = data, ...)
 }
+#' @export predict.glm
+NULL
 
 #' data.frame-first formula-second method for \code{\link[stats]{kmeans}}
 #'
@@ -181,6 +185,9 @@ predict.kmeans <- function(object, data, ...) {
 
   apply(distances, 1, which.min)
 }
+#' @export predict.kmeans
+NULL
+
 
 #' data.frame-first formula-second method for \code{\link[stats]{prcomp}}
 #'
@@ -223,6 +230,9 @@ predict.prcomp <- function(object, data, ...) {
   data <- model_as_xy(data, attr(object, "formula"))$x
   stats:::predict.prcomp(object = object, newdata = data, ...)
 }
+#' @export predict.prcomp
+NULL
+
 
 #' data.frame-first formula-second method for \code{\link[stats]{aov}}
 #'
