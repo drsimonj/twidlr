@@ -69,10 +69,9 @@ cv.glmnet.data.frame <- function(data, formula, ...) {
 
 #' @rdname cv.glmnet
 #' @export
+#' @export predict.cv.glmnet
 predict.cv.glmnet <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
   glmnet::predict.cv.glmnet(object, newx = data, ...)
 }
-#' @export predict.cv.glmnet
-NULL

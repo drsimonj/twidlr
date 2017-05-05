@@ -31,10 +31,9 @@ xgboost.data.frame <- function(data, formula, ...) {
 
 #' @rdname xgboost
 #' @export
+#' @export predict.xgb.Booster
 predict.xgb.Booster <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
   xgboost:::predict.xgb.Booster(object, newdata = data, ...)
 }
-#' @export predict.xgb.Booster
-NULL

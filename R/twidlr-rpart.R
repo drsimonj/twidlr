@@ -30,9 +30,9 @@ rpart.data.frame <- function(data, formula, ...) {
 
 #' @rdname rpart
 #' @export
+#' @export predict.rpart
 predict.rpart <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   rpart:::predict.rpart(object, newdata = data, ...)
 }
-#' @export predict.rpart
-NULL
+

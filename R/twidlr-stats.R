@@ -58,12 +58,11 @@ lm.data.frame <- function(data, formula, ...) {
 
 #' @rdname lm
 #' @export
+#' @export predict.lm
 predict.lm <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   stats::predict.lm(object, newdata = data, ...)
 }
-#' @export predict.lm
-NULL
 
 
 #' data.frame-first formula-second method for \code{\link[stats]{glm}}
@@ -100,12 +99,12 @@ glm.data.frame <- function(data, formula, ...) {
 
 #' @rdname glm
 #' @export
+#' @export predict.glm
 predict.glm <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   stats::predict.glm(object, newdata = data, ...)
 }
-#' @export predict.glm
-NULL
+
 
 #' data.frame-first formula-second method for \code{\link[stats]{kmeans}}
 #'
@@ -159,6 +158,7 @@ kmeans.data.frame <- function(data, formula = ~., ...) {
 
 #' @rdname kmeans
 #' @export
+#' @export predict.kmeans
 predict.kmeans <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
@@ -173,8 +173,6 @@ predict.kmeans <- function(object, data, ...) {
 
   apply(distances, 1, which.min)
 }
-#' @export predict.kmeans
-NULL
 
 
 #' data.frame-first formula-second method for \code{\link[stats]{prcomp}}
@@ -213,13 +211,12 @@ prcomp.data.frame <- function(data, formula = ~., ...) {
 
 #' @rdname prcomp
 #' @export
+#' @export predict.prcomp
 predict.prcomp <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
   stats:::predict.prcomp(object = object, newdata = data, ...)
 }
-#' @export predict.prcomp
-NULL
 
 
 #' data.frame-first formula-second method for \code{\link[stats]{aov}}

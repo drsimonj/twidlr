@@ -38,12 +38,12 @@ crq.data.frame <- function(data, formula, ...) {
 
 #' @rdname crq
 #' @export
+#' @export predict.crq
 predict.crq <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   quantreg::predict.crq(object, newdata = data, ...)
 }
-#' @export predict.crq
-NULL
+
 
 #' data.frame-first formula-second method for \code{\link[quantreg]{rq}}
 #'
@@ -81,12 +81,12 @@ rq.data.frame <- function(data, formula, ...) {
 
 #' @rdname rq
 #' @export
+#' @export predict.rq
 predict.rq <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   quantreg::predict.rq(object, newdata = data, ...)
 }
-#' @export predict.rq
-NULL
+
 
 #' data.frame-first formula-second method for \code{\link[quantreg]{nlrq}}
 #'

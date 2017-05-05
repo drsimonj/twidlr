@@ -30,9 +30,9 @@ randomForest.data.frame <- function(data, formula, ...) {
 
 #' @rdname randomForest
 #' @export
+#' @export predict.randomForest
 predict.randomForest <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   randomForest:::predict.randomForest(object, newdata = data, ...)
 }
-#' @export predict.randomForest
-NULL
+
