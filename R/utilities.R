@@ -81,9 +81,11 @@ check_pkg <- function(pkg_name) {
 #'   error message.
 #'
 #' @examples
+#' \dontrun{
 #' check_alt_args(a = 10, target = "a", alts = c("b"))
 #' check_alt_args(b = 10, target = "a", alts = c("b"))
 #' check_alt_args(b = 10, target = "a", alts = c("b"), stop = FALSE)
+#' }
 check_alt_args <- function(..., target, alts, stop = TRUE) {
   checks <- alts %in% names(c(...))
   if (any(checks)) {

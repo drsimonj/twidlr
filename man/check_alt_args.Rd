@@ -22,7 +22,9 @@ Check for certain arguments that, if present, will result in function
 producing an error and stopping the function if desired.
 }
 \examples{
+\dontrun{
 check_alt_args(a = 10, target = "a", alts = c("b"))
 check_alt_args(b = 10, target = "a", alts = c("b"))
 check_alt_args(b = 10, target = "a", alts = c("b"), stop = FALSE)
+}
 }
