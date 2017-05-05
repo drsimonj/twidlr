@@ -100,6 +100,9 @@ check_alt_args <- function(..., target, alts, stop = TRUE) {
 
 #' Run checks for twidlr predict functions and invisibly return 'data' coerced
 #' to a data frame
+#'
+#' @param data Value for `data` argument
+#' @param ... Additional named arguments
 predict_checks <- function(data, ...) {
   # Check that 'data' exists and alternatives do not
   if (missing(data)) stop("'data' is missing")

@@ -7,6 +7,11 @@ to a data frame}
 \usage{
 predict_checks(data, ...)
 }
+\arguments{
+\item{data}{Value for `data` argument}
+
+\item{...}{Additional named arguments}
+}
 \description{
 Run checks for twidlr predict functions and invisibly return 'data' coerced
 to a data frame
