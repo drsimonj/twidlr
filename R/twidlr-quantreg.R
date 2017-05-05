@@ -37,7 +37,7 @@ crq.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname crq
-#' @export predict.crq
+#' @export
 predict.crq <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   quantreg::predict.crq(object, newdata = data, ...)
