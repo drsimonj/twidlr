@@ -80,7 +80,7 @@ predict.lm <- function(object, data, ...) {
 #' @examples
 #' fit <- glm(mtcars, vs ~ hp + wt, family = binomial())
 #' summary(fit)
-#' predict(fit mtcars[1:5,])
+#' predict(fit, mtcars[1:5,])
 #'
 #' # Help page for function being twiddled
 #' ?stats::glm
