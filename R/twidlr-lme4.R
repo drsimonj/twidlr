@@ -5,9 +5,7 @@
 #'
 #' @seealso \code{\link[lme4]{lmer}}
 #'
-#' @param data frame containing the variables in the model
-#' @inheritParams lme4::lmer
-#' @param ... Additional arguments to pass to model function
+#' @inheritParams twidlr_defaults
 #' @export
 #'
 #' @examples
@@ -32,12 +30,13 @@ lmer.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname lmer
-#' @export predict.merMod
+#' @export
 predict.merMod <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   lme4:::predict.merMod(object, newdata = data, ...)
 }
-
+#' @export predict.merMod
+NULL
 
 #' data.frame-first formula-second method for \code{\link[lme4]{glmer}}
 #'
@@ -46,13 +45,13 @@ predict.merMod <- function(object, data, ...) {
 #'
 #' @seealso \code{\link[lme4]{glmer}}
 #'
-#' @param data frame containing the variables in the model
-#' @inheritParams lme4::lmer
-#' @param ... Additional arguments to pass to model function
+#' @inheritParams twidlr_defaults
 #' @export
 #'
 #' @examples
-#' fit <- glmer(lme4::cbpp, cbind(incidence, size - incidence) ~ period + (1 | herd), family = binomial)
+#' fit <- glmer(lme4::cbpp,
+#'   cbind(incidence, size - incidence) ~ period + (1 | herd),
+#'   family = binomial)
 #' summary(fit)
 #'
 #' # Help page for function being twiddled

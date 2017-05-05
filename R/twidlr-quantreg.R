@@ -11,7 +11,7 @@
 #' @examples
 #' set.seed(1968)
 #' n <- 200
-#' x <-rnorm(n)
+#' x <- rnorm(n)
 #' y <- 5 + x + rnorm(n)
 #' c <- 4 + x + rnorm(n)
 #' d <- (y > c)
@@ -37,11 +37,13 @@ crq.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname crq
-#' @export predict.crq
+#' @export
 predict.crq <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   quantreg::predict.crq(object, newdata = data, ...)
 }
+#' @export predict.crq
+NULL
 
 #' data.frame-first formula-second method for \code{\link[quantreg]{rq}}
 #'
@@ -78,11 +80,13 @@ rq.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname rq
-#' @export predict.rq
+#' @export
 predict.rq <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   quantreg::predict.rq(object, newdata = data, ...)
 }
+#' @export predict.rq
+NULL
 
 #' data.frame-first formula-second method for \code{\link[quantreg]{nlrq}}
 #'
@@ -121,7 +125,7 @@ nlrq.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname nlrq
-#' @export predict.nlrq
+#' @export
 predict.nlrq <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   quantreg::predict.nlrq(object, newdata = data, ...)
@@ -164,7 +168,7 @@ predict.nlrq <- function(object, data, ...) {
 #' }
 #'
 #' #' @rdname rqss
-#' #' @export predict.rqss
+#' #' @export
 #' predict.rqss <- function(object, data, ...) {
 #'   data <- predict_checks(data = data, ...)
 #'   quantreg::predict.rqss(object, newdata = data, ...)

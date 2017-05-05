@@ -75,7 +75,7 @@ x <- data.frame(rbind(
   c("quantreg","rqss"),
   c("quantreg","crq"),
   c("stats", "kmeans"),
-  c("stats", "t.test"),
+  c("stats", "t.test (now 'ttest')"),
   c("stats", "prcomp"),
   c("stats", "aov"),
   c("glmnet", "cv.glmnet")

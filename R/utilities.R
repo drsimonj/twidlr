@@ -1,3 +1,15 @@
+#' Pipe operator
+#'
+#' @name %>%
+#' @rdname pipe
+#' @keywords internal
+#' @export
+#' @importFrom magrittr %>%
+#' @usage lhs \%>\% rhs
+NULL
+
+
+
 #' Convert data frame and model \code{\link[stats]{formula}} to input matrix and
 #' output vector list
 #'
@@ -25,7 +37,7 @@
 #' model_as_xy(mtcars, ~ .)
 model_as_xy <- function(data, formula) {
 
-  if (!is(data, "data.frame") | !is(formula, "formula"))
+  if (!is.data.frame(data) | !methods::is(formula, "formula"))
     stop("Please provide a data frame and formula (see ?stats::formula)")
 
   # Convert data frame to input matrix and label vector
@@ -47,24 +59,16 @@ model_as_xy <- function(data, formula) {
 #' @param pkg_name Character of the package name to check
 #'
 #' @examples
+#' \dontrun{
 #' check_pkg("stats")
 #' check_pkg("dplyr")
 #' check_pkg("zzz")
+#' }
 check_pkg <- function(pkg_name) {
   if (!requireNamespace(pkg_name, quietly = TRUE)) {
     stop("The '", pkg_name, "' package is needed. Please install it.", call. = FALSE)
   }
 }
-
-#' Pipe operator
-#'
-#' @name %>%
-#' @rdname pipe
-#' @keywords internal
-#' @export
-#' @importFrom magrittr %>%
-#' @usage lhs \%>\% rhs
-NULL
 
 #' Check if argument(s) are given as alternatives to another
 #'
@@ -79,9 +83,11 @@ NULL
 #'   error message.
 #'
 #' @examples
+#' \dontrun{
 #' check_alt_args(a = 10, target = "a", alts = c("b"))
 #' check_alt_args(b = 10, target = "a", alts = c("b"))
 #' check_alt_args(b = 10, target = "a", alts = c("b"), stop = FALSE)
+#' }
 check_alt_args <- function(..., target, alts, stop = TRUE) {
   checks <- alts %in% names(c(...))
   if (any(checks)) {
@@ -94,6 +100,9 @@ check_alt_args <- function(..., target, alts, stop = TRUE) {
 
 #' Run checks for twidlr predict functions and invisibly return 'data' coerced
 #' to a data frame
+#'
+#' @param data Value for `data` argument
+#' @param ... Additional named arguments
 predict_checks <- function(data, ...) {
   # Check that 'data' exists and alternatives do not
   if (missing(data)) stop("'data' is missing")

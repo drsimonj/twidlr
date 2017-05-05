@@ -9,23 +9,20 @@
 #' @export
 #'
 #' @examples
-#' t.test(iris[1:100,], Petal.Width ~ Species)
-#'
-#' # Help page for function being twiddled
-#' ?stats::t.test
-t.test <- function(data, formula, ...) {
+#' ttest(iris[1:100,], Petal.Width ~ Species)
+ttest <- function(data, formula, ...) {
   check_pkg("stats")
   UseMethod("ttest")
 }
 
 #' @export
-t.test.default <- function(data, formula, ...) {
+ttest.default <- function(data, formula, ...) {
   ttest.data.frame(as.data.frame(data), formula, ...)
 }
 
 #' @export
 ttest.data.frame <- function(data, formula, ...) {
-  stats:::t.test.formula(formula = formula, data = data, ...)
+  stats::t.test(formula = formula, data = data, ...)
 }
 
 #' data.frame-first formula-second method for \code{\link[stats]{lm}}
@@ -60,11 +57,13 @@ lm.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname lm
-#' @export predict.lm
+#' @export
 predict.lm <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   stats::predict.lm(object, newdata = data, ...)
 }
+#' @export predict.lm
+NULL
 
 
 #' data.frame-first formula-second method for \code{\link[stats]{glm}}
@@ -80,7 +79,7 @@ predict.lm <- function(object, data, ...) {
 #' @examples
 #' fit <- glm(mtcars, vs ~ hp + wt, family = binomial())
 #' summary(fit)
-#' predict(fit mtcars[1:5,])
+#' predict(fit, mtcars[1:5,])
 #'
 #' # Help page for function being twiddled
 #' ?stats::glm
@@ -100,11 +99,13 @@ glm.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname glm
-#' @export predict.glm
+#' @export
 predict.glm <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   stats::predict.glm(object, newdata = data, ...)
 }
+#' @export predict.glm
+NULL
 
 #' data.frame-first formula-second method for \code{\link[stats]{kmeans}}
 #'
@@ -133,20 +134,11 @@ predict.glm <- function(object, data, ...) {
 #' d <- data.frame(rbind(y, y*5))
 #' plot(d)
 #'
-#' library(broom)
-#' library(ggplot2)
-#' # Show clustering with X and Y dimensions
-#' tmp <- augment(kmeans(d, ~., 2), d)
-#' ggplot(tmp, aes(X1, X2, color = .cluster)) +
-#'   geom_point()
+#' fit <- kmeans(d, centers = 2)
+#' plot(d, col = predict(fit, d))
 #'
-#' # Show clustering where formula used to add a quadratic component
-#' tmp <- augment(kmeans(d, ~ X1 + X2 + I(X1^2 + X2^2), 2), d)
-#' ggplot(tmp, aes(X1, X2, color = .cluster)) +
-#'   geom_point()
-#'
-#' # Help page for function being twiddled
-#' ?stats::kmeans
+#' fit <- kmeans(d, ~ X1 + X2 + I(X1^2 + X2^2), centers = 2)
+#' plot(d, col = predict(fit, d))
 kmeans <- function(data, formula = ~., ...) {
   check_pkg("stats")
   UseMethod("kmeans")
@@ -154,7 +146,7 @@ kmeans <- function(data, formula = ~., ...) {
 
 #' @export
 kmeans.default <- function(data, formula = ~., ...) {
-  kmeans.data.frame(as.data.frame(data), formula, ...)
+  kmeans.data.frame(as.data.frame(data), formula = formula, ...)
 }
 
 #' @export
@@ -166,7 +158,7 @@ kmeans.data.frame <- function(data, formula = ~., ...) {
 }
 
 #' @rdname kmeans
-#' @export predict.kmeans
+#' @export
 predict.kmeans <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
@@ -181,6 +173,9 @@ predict.kmeans <- function(object, data, ...) {
 
   apply(distances, 1, which.min)
 }
+#' @export predict.kmeans
+NULL
+
 
 #' data.frame-first formula-second method for \code{\link[stats]{prcomp}}
 #'
@@ -217,12 +212,15 @@ prcomp.data.frame <- function(data, formula = ~., ...) {
 }
 
 #' @rdname prcomp
-#' @export predict.prcomp
+#' @export
 predict.prcomp <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
   stats:::predict.prcomp(object = object, newdata = data, ...)
 }
+#' @export predict.prcomp
+NULL
+
 
 #' data.frame-first formula-second method for \code{\link[stats]{aov}}
 #'

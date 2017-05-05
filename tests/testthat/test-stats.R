@@ -1,7 +1,7 @@
 context("stats")
 
-test_that("t.test", {
-  twidlr_fit <- twidlr::t.test(mtcars, hp ~ am)
+test_that("ttest", {
+  twidlr_fit <- twidlr::ttest(mtcars, hp ~ am)
   stats_fit  <- stats::t.test(hp ~ am, mtcars)
 
   expect_equal(twidlr_fit$statistic, stats_fit$statistic)

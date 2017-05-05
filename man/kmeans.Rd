@@ -38,20 +38,11 @@ y <- x/sqrt(rowSums(x^2))
 d <- data.frame(rbind(y, y*5))
 plot(d)
 
-library(broom)
-library(ggplot2)
-# Show clustering with X and Y dimensions
-tmp <- augment(kmeans(d, ~., 2), d)
-ggplot(tmp, aes(X1, X2, color = .cluster)) +
-  geom_point()
+fit <- kmeans(d, centers = 2)
+plot(d, col = predict(fit, d))
 
-# Show clustering where formula used to add a quadratic component
-tmp <- augment(kmeans(d, ~ X1 + X2 + I(X1^2 + X2^2), 2), d)
-ggplot(tmp, aes(X1, X2, color = .cluster)) +
-  geom_point()
-
-# Help page for function being twiddled
-?stats::kmeans
+fit <- kmeans(d, ~ X1 + X2 + I(X1^2 + X2^2), centers = 2)
+plot(d, col = predict(fit, d))
 }
 \seealso{
 \code{\link[stats]{kmeans}}

@@ -10,24 +10,13 @@ lmer(data, formula, ...)
 \method{predict}{merMod}(object, data, ...)
 }
 \arguments{
-\item{data}{frame containing the variables in the model}
+\item{data}{Data frame containing the variables in the model}
 
-\item{formula}{a two-sided linear formula object describing both the
-    fixed-effects and random-effects part of the model, with the
-    response on the left of a \code{~} operator and the terms, separated
-    by \code{+} operators, on the right.  Random-effects terms are
-    distinguished by vertical bars (\code{|}) separating expressions
-    for design matrices from grouping factors.  Two vertical bars
-    (\code{||}) can be used to specify multiple uncorrelated random
-    effects for the same grouping variable. (Because of the way it is
-    implemented, the \code{||}-syntax \emph{works
-    only for design matrices containing
-    numeric (continuous) predictors}; to fit models with independent
-  categorical effects, see \code{\link{dummy}} or the \code{lmer_alt}
-  function from the \code{afex} package.) 
-}
+\item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
 
 \item{...}{Additional arguments to pass to model function}
+
+\item{object}{Fitted model}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to
