@@ -5,9 +5,7 @@
 #'
 #' @seealso \code{\link[lme4]{lmer}}
 #'
-#' @param data frame containing the variables in the model
-#' @inheritParams lme4::lmer
-#' @param ... Additional arguments to pass to model function
+#' @inheritParams twidlr_defaults
 #' @export
 #'
 #' @examples
@@ -46,9 +44,7 @@ predict.merMod <- function(object, data, ...) {
 #'
 #' @seealso \code{\link[lme4]{glmer}}
 #'
-#' @param data frame containing the variables in the model
-#' @inheritParams lme4::lmer
-#' @param ... Additional arguments to pass to model function
+#' @inheritParams twidlr_defaults
 #' @export
 #'
 #' @examples
