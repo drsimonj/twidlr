@@ -19,6 +19,7 @@ Suggests: testthat,
     rpart,
     randomForest,
     lme4,
-    quantreg
+    quantreg,
+    survival
 Imports: magrittr,
     lazyeval
