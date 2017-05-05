@@ -1,3 +1,15 @@
+#' Pipe operator
+#'
+#' @name %>%
+#' @rdname pipe
+#' @keywords internal
+#' @export
+#' @importFrom magrittr %>%
+#' @usage lhs \%>\% rhs
+NULL
+
+
+
 #' Convert data frame and model \code{\link[stats]{formula}} to input matrix and
 #' output vector list
 #'
@@ -25,7 +37,7 @@
 #' model_as_xy(mtcars, ~ .)
 model_as_xy <- function(data, formula) {
 
-  if (!is(data, "data.frame") | !is(formula, "formula"))
+  if (!is.data.frame(data) | !methods::is(formula, "formula"))
     stop("Please provide a data frame and formula (see ?stats::formula)")
 
   # Convert data frame to input matrix and label vector
@@ -55,16 +67,6 @@ check_pkg <- function(pkg_name) {
     stop("The '", pkg_name, "' package is needed. Please install it.", call. = FALSE)
   }
 }
-
-#' Pipe operator
-#'
-#' @name %>%
-#' @rdname pipe
-#' @keywords internal
-#' @export
-#' @importFrom magrittr %>%
-#' @usage lhs \%>\% rhs
-NULL
 
 #' Check if argument(s) are given as alternatives to another
 #'

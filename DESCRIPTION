@@ -22,4 +22,5 @@ Suggests: testthat,
     quantreg,
     survival
 Imports: magrittr,
-    lazyeval
+    lazyeval,
+    methods
