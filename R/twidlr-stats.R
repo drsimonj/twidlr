@@ -22,7 +22,7 @@ ttest.default <- function(data, formula, ...) {
 
 #' @export
 ttest.data.frame <- function(data, formula, ...) {
-  stats:::t.test.formula(formula = formula, data = data, ...)
+  stats::t.test(formula = formula, data = data, ...)
 }
 
 #' data.frame-first formula-second method for \code{\link[stats]{lm}}
