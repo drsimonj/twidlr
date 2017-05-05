@@ -25,7 +25,7 @@ This function passes a data.frame, formula, and additional arguments to
 \examples{
 set.seed(1968)
 n <- 200
-x <-rnorm(n)
+x <- rnorm(n)
 y <- 5 + x + rnorm(n)
 c <- 4 + x + rnorm(n)
 d <- (y > c)

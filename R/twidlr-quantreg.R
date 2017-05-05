@@ -11,7 +11,7 @@
 #' @examples
 #' set.seed(1968)
 #' n <- 200
-#' x <-rnorm(n)
+#' x <- rnorm(n)
 #' y <- 5 + x + rnorm(n)
 #' c <- 4 + x + rnorm(n)
 #' d <- (y > c)

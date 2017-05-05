@@ -48,7 +48,9 @@ predict.merMod <- function(object, data, ...) {
 #' @export
 #'
 #' @examples
-#' fit <- glmer(lme4::cbpp, cbind(incidence, size - incidence) ~ period + (1 | herd), family = binomial)
+#' fit <- glmer(lme4::cbpp,
+#'   cbind(incidence, size - incidence) ~ period + (1 | herd),
+#'   family = binomial)
 #' summary(fit)
 #'
 #' # Help page for function being twiddled
