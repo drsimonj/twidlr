@@ -59,9 +59,11 @@ model_as_xy <- function(data, formula) {
 #' @param pkg_name Character of the package name to check
 #'
 #' @examples
+#' \dontrun{
 #' check_pkg("stats")
 #' check_pkg("dplyr")
 #' check_pkg("zzz")
+#' }
 check_pkg <- function(pkg_name) {
   if (!requireNamespace(pkg_name, quietly = TRUE)) {
     stop("The '", pkg_name, "' package is needed. Please install it.", call. = FALSE)

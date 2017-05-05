@@ -14,7 +14,9 @@ Check if package is locally installed and call `stop()` with an error message
 if not
 }
 \examples{
+\dontrun{
 check_pkg("stats")
 check_pkg("dplyr")
 check_pkg("zzz")
+}
 }
