@@ -29,7 +29,7 @@ glmnet.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname glmnet
-#' @export predict.glmnet
+#' @export
 predict.glmnet <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
@@ -68,7 +68,7 @@ cv.glmnet.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname cv.glmnet
-#' @export predict.cv.glmnet
+#' @export
 predict.cv.glmnet <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x

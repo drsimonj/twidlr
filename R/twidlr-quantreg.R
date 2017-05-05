@@ -78,7 +78,7 @@ rq.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname rq
-#' @export predict.rq
+#' @export
 predict.rq <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   quantreg::predict.rq(object, newdata = data, ...)
@@ -121,7 +121,7 @@ nlrq.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname nlrq
-#' @export predict.nlrq
+#' @export
 predict.nlrq <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   quantreg::predict.nlrq(object, newdata = data, ...)
@@ -164,7 +164,7 @@ predict.nlrq <- function(object, data, ...) {
 #' }
 #'
 #' #' @rdname rqss
-#' #' @export predict.rqss
+#' #' @export
 #' predict.rqss <- function(object, data, ...) {
 #'   data <- predict_checks(data = data, ...)
 #'   quantreg::predict.rqss(object, newdata = data, ...)

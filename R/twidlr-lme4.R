@@ -32,7 +32,7 @@ lmer.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname lmer
-#' @export predict.merMod
+#' @export
 predict.merMod <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   lme4:::predict.merMod(object, newdata = data, ...)

@@ -60,7 +60,7 @@ lm.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname lm
-#' @export predict.lm
+#' @export
 predict.lm <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   stats::predict.lm(object, newdata = data, ...)
@@ -100,7 +100,7 @@ glm.data.frame <- function(data, formula, ...) {
 }
 
 #' @rdname glm
-#' @export predict.glm
+#' @export
 predict.glm <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   stats::predict.glm(object, newdata = data, ...)
@@ -166,7 +166,7 @@ kmeans.data.frame <- function(data, formula = ~., ...) {
 }
 
 #' @rdname kmeans
-#' @export predict.kmeans
+#' @export
 predict.kmeans <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
@@ -217,7 +217,7 @@ prcomp.data.frame <- function(data, formula = ~., ...) {
 }
 
 #' @rdname prcomp
-#' @export predict.prcomp
+#' @export
 predict.prcomp <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
