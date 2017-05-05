@@ -9,17 +9,7 @@
 #' @export
 #'
 #' @examples
-#' t.test(iris[1:100,], Petal.Width ~ Species)
-t.test <- function(data, formula, ...) {
-  ttest(data, formula, ...)
-}
-#' @export t.test
-NULL
-
-#' S3 generic method for t.test
-#'
-#' @inheritParams twidlr_defaults
-#' @export
+#' ttest(iris[1:100,], Petal.Width ~ Species)
 ttest <- function(data, formula, ...) {
   check_pkg("stats")
   UseMethod("ttest")

@@ -2,7 +2,7 @@
 % Please edit documentation in R/twidlr-stats.R
 \name{ttest}
 \alias{ttest}
-\title{S3 generic method for t.test}
+\title{data.frame-first formula-second method for \code{\link[stats]{t.test}}}
 \usage{
 ttest(data, formula, ...)
 }
@@ -14,5 +14,12 @@ ttest(data, formula, ...)
 \item{...}{Additional arguments to pass to model function}
 }
 \description{
-S3 generic method for t.test
+This function passes a data.frame, formula, and additional arguments to
+\code{\link[stats]{t.test}}.
+}
+\examples{
+ttest(iris[1:100,], Petal.Width ~ Species)
+}
+\seealso{
+\code{\link[stats]{t.test}}
 }
