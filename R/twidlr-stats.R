@@ -15,16 +15,16 @@
 #' ?stats::t.test
 t.test <- function(data, formula, ...) {
   check_pkg("stats")
-  UseMethod("ttest")
+  UseMethod("t.test")
 }
 
 #' @export
 t.test.default <- function(data, formula, ...) {
-  ttest.data.frame(as.data.frame(data), formula, ...)
+  t.test.data.frame(as.data.frame(data), formula, ...)
 }
 
 #' @export
-ttest.data.frame <- function(data, formula, ...) {
+t.test.data.frame <- function(data, formula, ...) {
   stats:::t.test.formula(formula = formula, data = data, ...)
 }
 
