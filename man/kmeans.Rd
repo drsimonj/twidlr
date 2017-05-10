@@ -9,16 +9,6 @@ kmeans(data, formula = ~., ...)
 
 \method{predict}{kmeans}(object, data, ...)
 }
-\arguments{
-\item{data}{Data frame containing the variables in the model}
-
-\item{formula}{One-sided \code{\link[stats]{formula}} (optional). If omitted,
-all variables in "data" will be included.}
-
-\item{...}{Additional arguments to pass to model function}
-
-\item{object}{Fitted model}
-}
 \description{
 This function passes a data.frame, formula, and additional arguments to
 \code{\link[stats]{kmeans}}.

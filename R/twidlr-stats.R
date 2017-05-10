@@ -113,9 +113,7 @@ predict.glm <- function(object, data, ...) {
 #'
 #' @seealso \code{\link[stats]{kmeans}}
 #'
-#' @inheritParams twidlr_defaults
-#' @param formula One-sided \code{\link[stats]{formula}} (optional). If omitted,
-#'   all variables in "data" will be included.
+#' @inheritParams unsupervvised_twidlr_defaults
 #' @export
 #'
 #' @examples
@@ -258,9 +256,7 @@ aov.data.frame <- function(data, formula, ...) {
 #'
 #' @seealso \code{\link[stats]{prcomp}}
 #'
-#' @inheritParams twidlr_defaults
-#' @param formula a formula with no response variable, referring only to numeric
-#'   variables
+#' @inheritParams unsupervised_twidlr_defaults
 #' @export
 #'
 #' @examples
@@ -305,6 +301,11 @@ predict.prcomp <- function(object, data, ...) {
 #' @inheritParams unsupervised_twidlr_defaults
 #' @export
 #'
+#' @examples
+#'factanal(mtcars, factors = 3)
+#'
+#' fit <- factanal(mtcars, ~ hp*am*wt, factors = 3)
+#' predict(fit, mtcars)
 factanal <- function(data, formula = ~., ...) {
   check_pkg("stats")
   UseMethod("factanal")
@@ -333,7 +334,7 @@ predict.factanal <- function(object, data, ...) {
   # Partially uses code from original function. Must cite relevant author
   data <- scale(data, TRUE, TRUE)
   Lambda <- object$loadings
-  cv <- cov.wt(data)$cov
+  cv <- stats::cov.wt(data)$cov
   sds <- sqrt(diag(cv))
   cv <- cv/(sds %o% sds)
   results <- data %*% solve(cv, Lambda)

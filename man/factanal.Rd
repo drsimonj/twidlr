@@ -23,6 +23,12 @@ factanal(data, formula = ~., ...)
 This function passes a data.frame, formula, and additional arguments to
 \code{\link[stats]{factanal}}.
 }
+\examples{
+factanal(mtcars, factors = 3)
+
+fit <- factanal(mtcars, ~ hp*am*wt, factors = 3)
+predict(fit, mtcars)
+}
 \seealso{
 \code{\link[stats]{factanal}}
 }

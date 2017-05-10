@@ -24,9 +24,6 @@ variables}
 \item{...}{Additional arguments to pass to model function}
 
 \item{object}{Fitted model}
-
-\item{formula}{a formula with no response variable, referring only to numeric
-variables}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to
