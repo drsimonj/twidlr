@@ -1,7 +1,7 @@
 # twidlr 0.0.0.9000
 
 * Added data.frame-first formula-second functions for:
-    * `stats::aov, t.test (now 'ttest'), lm, glm, kmeans, prcomp`
+    * `stats::aov, t.test (now 'ttest'), lm, glm, kmeans, prcomp, factanal`
     * `xgboost::xgboost`
     * `glmnet::glmnet, cv.glmnet`
     * `rpart::rpart`

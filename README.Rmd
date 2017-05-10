@@ -78,7 +78,8 @@ x <- data.frame(rbind(
   c("stats", "t.test (now 'ttest')"),
   c("stats", "prcomp"),
   c("stats", "aov"),
-  c("glmnet", "cv.glmnet")
+  c("glmnet", "cv.glmnet"),
+  c("stats", "factanal")
   
   ## < ---------------------------------------------------------------
 ))
