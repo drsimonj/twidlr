@@ -27,7 +27,7 @@ This function passes a data.frame, formula, and additional arguments to
 factanal(mtcars, factors = 3)
 
 fit <- factanal(mtcars, ~ hp*am*wt, factors = 3)
-predict(fit, mtcars)
+predict(fit, mtcars[1:5, ])
 }
 \seealso{
 \code{\link[stats]{factanal}}
