@@ -2,9 +2,12 @@
 % Please edit documentation in R/twidlr-stats.R
 \name{factanal}
 \alias{factanal}
+\alias{predict.factanal}
 \title{data.frame-first formula-second method for \code{\link[stats]{factanal}}}
 \usage{
 factanal(data, formula = ~., ...)
+
+\method{predict}{factanal}(object, data, ...)
 }
 \arguments{
 \item{data}{Data frame containing the variables in the model}
@@ -13,6 +16,8 @@ factanal(data, formula = ~., ...)
 (optional). If omitted, all variables in "data" will be included.}
 
 \item{...}{Additional arguments to pass to model function}
+
+\item{object}{Fitted model}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to

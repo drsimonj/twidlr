@@ -317,5 +317,25 @@ factanal.default <- function(data, formula = ~., ...) {
 
 #' @export
 factanal.data.frame <- function(data, formula = ~., ...) {
-  stats::factanal(x = formula, data = data, ...)
+  object <- stats::factanal(x = formula, data = data, ...)
+  attr(object, "formula") <- formula
+  object
+}
+
+#' @rdname factanal
+#' @export
+#' @export predict.factanal
+predict.factanal <- function(object, data, ...) {
+  data <- predict_checks(data = data, ...)
+  data <- model_as_xy(data, attr(object, "formula"))$x
+
+  # The below solves for "regression" method conducted by factanal.
+  # Partially uses code from original function. Must cite relevant author
+  data <- scale(data, TRUE, TRUE)
+  Lambda <- object$loadings
+  cv <- cov.wt(data)$cov
+  sds <- sqrt(diag(cv))
+  cv <- cv/(sds %o% sds)
+  results <- data %*% solve(cv, Lambda)
+  as.data.frame(results)
 }
