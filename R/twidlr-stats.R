@@ -305,7 +305,7 @@ predict.prcomp <- function(object, data, ...) {
 #'factanal(mtcars, factors = 3)
 #'
 #' fit <- factanal(mtcars, ~ hp*am*wt, factors = 3)
-#' predict(fit, mtcars)
+#' predict(fit, mtcars[1:5, ])
 factanal <- function(data, formula = ~., ...) {
   check_pkg("stats")
   UseMethod("factanal")
@@ -319,6 +319,15 @@ factanal.default <- function(data, formula = ~., ...) {
 #' @export
 factanal.data.frame <- function(data, formula = ~., ...) {
   object <- stats::factanal(x = formula, data = data, ...)
+
+  # To predict via regression method
+  data <- model_as_xy(data, formula)$x
+  Lambda <- object$loadings
+  cv <- stats::cov.wt(data)$cov
+  sds <- sqrt(diag(cv))
+  cv <- cv/(sds %o% sds)
+
+  attr(object, "predict_matrix") <- solve(cv, Lambda)
   attr(object, "formula") <- formula
   object
 }
@@ -332,11 +341,6 @@ predict.factanal <- function(object, data, ...) {
 
   # The below solves for "regression" method conducted by factanal.
   # Partially uses code from original function. Must cite relevant author
-  data <- scale(data, TRUE, TRUE)
-  Lambda <- object$loadings
-  cv <- stats::cov.wt(data)$cov
-  sds <- sqrt(diag(cv))
-  cv <- cv/(sds %o% sds)
-  results <- data %*% solve(cv, Lambda)
+  results <- scale(data, TRUE, TRUE) %*% attr(object, "predict_matrix")
   as.data.frame(results)
 }
