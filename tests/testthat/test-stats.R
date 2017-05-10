@@ -85,3 +85,14 @@ test_that("aov", {
   expect_error(predict(twidlr_fit))
   expect_equal(predict(twidlr_fit, data = d), stats::predict.lm(origin_fit, newdata = d))
 })
+
+test_that("factanal", {
+  d <- datasets::mtcars
+
+  twidlr_fit <- twidlr::factanal(d, ~ hp * wt * am, factors = 3)
+  origin_fit <- stats::factanal(~ hp * wt * am, factors = 3, data = d, scores = "regression")
+
+  expect_equal(loadings(twidlr_fit), loadings(origin_fit))
+  expect_error(predict(twidlr_fit))
+  expect_equal(predict(twidlr_fit, data = d), as.data.frame(origin_fit$scores))
+})
