@@ -199,7 +199,7 @@ prcomp <- function(data, formula = ~., ...) {
 
 #' @export
 prcomp.default <- function(data, formula = ~., ...) {
-  prcomp.data.frame(as.data.frame(data), formula, ...)
+  prcomp.data.frame(data = as.data.frame(data), formula = formula, ...)
 }
 
 #' @export
@@ -249,3 +249,73 @@ aov.data.frame <- function(data, formula, ...) {
 }
 
 # predict method for aov is predict.lm
+
+
+#' data.frame-first formula-second method for \code{\link[stats]{prcomp}}
+#'
+#' This function passes a data.frame, formula, and additional arguments to
+#' \code{\link[stats]{prcomp}}.
+#'
+#' @seealso \code{\link[stats]{prcomp}}
+#'
+#' @inheritParams twidlr_defaults
+#' @param formula a formula with no response variable, referring only to numeric
+#'   variables
+#' @export
+#'
+#' @examples
+#' prcomp(mtcars)
+#'
+#' fit <- prcomp(mtcars, ~ .*.)
+#' predict(fit, mtcars[1:5,])
+prcomp <- function(data, formula = ~., ...) {
+  check_pkg("stats")
+  UseMethod("prcomp")
+}
+
+#' @export
+prcomp.default <- function(data, formula = ~., ...) {
+  prcomp.data.frame(data = as.data.frame(data), formula = formula, ...)
+}
+
+#' @export
+prcomp.data.frame <- function(data, formula = ~., ...) {
+  object <- stats:::prcomp.formula(formula = formula, data = data, ...)
+  attr(object, "formula") <- formula
+  object
+}
+
+#' @rdname prcomp
+#' @export
+#' @export predict.prcomp
+predict.prcomp <- function(object, data, ...) {
+  data <- predict_checks(data = data, ...)
+  data <- model_as_xy(data, attr(object, "formula"))$x
+  stats:::predict.prcomp(object = object, newdata = data, ...)
+}
+
+
+#' data.frame-first formula-second method for \code{\link[stats]{factanal}}
+#'
+#' This function passes a data.frame, formula, and additional arguments to
+#' \code{\link[stats]{factanal}}.
+#'
+#' @seealso \code{\link[stats]{factanal}}
+#'
+#' @inheritParams unsupervised_twidlr_defaults
+#' @export
+#'
+factanal <- function(data, formula = ~., ...) {
+  check_pkg("stats")
+  UseMethod("factanal")
+}
+
+#' @export
+factanal.default <- function(data, formula = ~., ...) {
+  factanal.data.frame(data = as.data.frame(data), formula = formula, ...)
+}
+
+#' @export
+factanal.data.frame <- function(data, formula = ~., ...) {
+  stats::factanal(x = formula, data = data, ...)
+}

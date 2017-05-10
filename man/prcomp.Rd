@@ -3,8 +3,14 @@
 \name{prcomp}
 \alias{prcomp}
 \alias{predict.prcomp}
+\alias{prcomp}
+\alias{predict.prcomp}
 \title{data.frame-first formula-second method for \code{\link[stats]{prcomp}}}
 \usage{
+prcomp(data, formula = ~., ...)
+
+\method{predict}{prcomp}(object, data, ...)
+
 prcomp(data, formula = ~., ...)
 
 \method{predict}{prcomp}(object, data, ...)
@@ -18,8 +24,14 @@ variables}
 \item{...}{Additional arguments to pass to model function}
 
 \item{object}{Fitted model}
+
+\item{formula}{a formula with no response variable, referring only to numeric
+variables}
 }
 \description{
+This function passes a data.frame, formula, and additional arguments to
+\code{\link[stats]{prcomp}}.
+
 This function passes a data.frame, formula, and additional arguments to
 \code{\link[stats]{prcomp}}.
 }
@@ -28,7 +40,13 @@ prcomp(mtcars)
 
 fit <- prcomp(mtcars, ~ .*.)
 predict(fit, mtcars[1:5,])
+prcomp(mtcars)
+
+fit <- prcomp(mtcars, ~ .*.)
+predict(fit, mtcars[1:5,])
 }
 \seealso{
+\code{\link[stats]{prcomp}}
+
 \code{\link[stats]{prcomp}}
 }
