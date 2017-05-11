@@ -17,17 +17,13 @@ ttest <- function(data, formula, ...) {
 
 #' @export
 ttest.default <- function(data, formula, ...) {
-  ttest.data.frame(as.data.frame(data), formula, ...)
-}
-
-#' @export
-ttest.data.frame <- function(data, formula, ...) {
   key_args <- coerce_args(data, formula)
-  data <- key_args$data
-  formula <- key_args$formula
+  data     <- key_args$data
+  formula  <- key_args$formula
 
   stats::t.test(formula = formula, data = data, ...)
 }
+
 
 #' data.frame-first formula-second method for \code{\link[stats]{lm}}
 #'
