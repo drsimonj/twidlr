@@ -23,7 +23,7 @@ fit <- model(data, formula, ...)
 predict(fit, data, ...)
 ```
 
-Where "data" is a **required** data.frame (or able to be coerced to one) and "formula" describes the model to be fitted.
+Where "data" is a **required** data.frame (or able to be coerced to one) and "formula" is a formula (or string able to be coerced to one) that describes the model to be fitted.
 
 twidlr gets its name from the "twiddle" used in R formulas.
 
@@ -51,7 +51,7 @@ twidlr seeks to overcome these problems be providing:
 - **Consistent API** for model functions and their corresponding `predict` methods (helping to improve the generality of tidy modelling packages like [piplearner](https://github.com/drsimonj/pipelearner))
 - **Pure and available predictions** by way of `predict` being made available for all methods (including unsupervised algorithms like kmeans) and making "data" a required argument
 - **[Tidyverse](http://tidyverse.org/) philosophy** by working with data frames and being pipeable such as `mtcars %>% lm(hp ~ wt)`
-- **Leverage formula operators** where they may be valid but not originally available. For example, to specify select variables or include additional terms like interactions and dummy-coded variables with syntax such as `glmnet(iris, Sepal.Width ~ Petal.Width * Petal.Length + Species)`.
+- **Leverage formula operators** where they may be valid but not originally available. For example, to specify select variables or include additional terms like interactions and dummy-coded variables with syntax such as `glmnet(iris, Sepal.Width ~ Petal.Width * Petal.Length + Species)`. Formulas created as strings can always be used too!
 
 ## twidlr models
 
