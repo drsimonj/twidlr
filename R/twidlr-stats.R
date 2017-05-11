@@ -22,6 +22,10 @@ ttest.default <- function(data, formula, ...) {
 
 #' @export
 ttest.data.frame <- function(data, formula, ...) {
+  key_args <- coerce_args(data, formula)
+  data <- key_args$data
+  formula <- key_args$formula
+
   stats::t.test(formula = formula, data = data, ...)
 }
 
