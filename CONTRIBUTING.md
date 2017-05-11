@@ -26,14 +26,14 @@ To add the model function `mod()` from the package `pkg`:
     - Can be done manually or by running `devtools::use_package("pkg", "Suggests")`. For example, `devtools::use_package("randomForest", "Suggests")`
 2. If it doesn't exist, create a new file in "R/" named "twidlr-pkg.R", in which you'll add your code
     - For example, code for `lm()` from the stats package resides in "R/twidlr-stats.R"
-3. In this file, add four functions: `mod`, `mod.default`, `mod.data.frame`, `predict.class_of_fitted_mod`. See any ["R/twidlr_*.R"](https://github.com/drsimonj/twidlr/tree/master/R) file for examples.
+3. In this file, add three functions: `mod`, `mod.default`, `predict.class_of_fitted_mod`. See any ["R/twidlr_*.R"](https://github.com/drsimonj/twidlr/tree/master/R) file for examples.
     - all `mod*` functions are defined as `function(data, formula, ...)`
         - For unsupervised models (e.g., [kmeans](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-stats.R)), formula may be set to `~.` by default.
     - `mod` checks for necessary package via `check_pkg("pkg")` and calls the appropriate S3 method.
         - Be sure to document this function appropriately. For example, the document title should be "data.frame-first formula-second method for \code{\link[pkg]{mod}}"
-    - `mod.default` coerces `data` to a data.frame and calls `mod.data.frame`
-    - `mod.data.frame` returns an appropriate call to `pkg::mod()`
-        - This can involve passing arguments "as is" (e.g., [`lm` and `glm`](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-stats.R)), or data munging to be done first (e.g., [xgboost](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-xgboost.R) and [glmnet](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-glmnet.R)). When data munging is required (or `formula` cannot be passed), be sure to add `formula` as an attribute to the fitted object (again, see [xgboost](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-xgboost.R) and [glmnet](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-glmnet.R) for examples). This is important so that the same data munging can be done by `predict`.
+    - `mod.default` does necessary data processing and returns an appropriate call to `pkg::mod()`
+        - This should always start by coercing `data` to a data.frame (thus allowing other square structures) and `formula` to a formula (thus allowing string-based formulas) by way of `coerce_args`.
+        - Calling the proper model function can involve passing arguments "as is" (e.g., [`lm` and `glm`](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-stats.R)), or data munging to be done first (e.g., [xgboost](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-xgboost.R) and [glmnet](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-glmnet.R)). When data munging is required (or `formula` cannot be passed), be sure to add `formula` as an attribute to the fitted object (again, see [xgboost](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-xgboost.R) and [glmnet](https://github.com/drsimonj/twidlr/blob/master/R/twidlr-glmnet.R) for examples). This is important so that the same data munging can be done by `predict`.
     - `predict.class_of_fitted_mod` is defined as `function(object, data, ...)`, and returns an appropriate call to `pkg::predict.class_of_mod` (or valid alternative).
         - It must begin with `data <- predict_checks(data = data, ...)`, which runs generic checks and coerces `data` to a data.frame.
 4. It if doesn't exist already, create a new file in "tests/testthat/" named "test-pkg.R", in which you'll add your tests.
