@@ -16,7 +16,8 @@ prcomp(data, formula = ~., ...)
 \method{predict}{prcomp}(object, data, ...)
 }
 \arguments{
-\item{data}{Data frame containing the variables in the model}
+\item{data}{Data frame (or object that can be coerced to one) containing the
+variables in the model}
 
 \item{formula}{a formula with no response variable, referring only to numeric
 variables}

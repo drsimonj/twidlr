@@ -21,11 +21,10 @@ lmer <- function(data, formula, ...) {
 
 #' @export
 lmer.default <- function(data, formula, ...) {
-  lmer.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-lmer.data.frame <- function(data, formula, ...) {
   lme4::lmer(formula = formula, data = data, ...)
 }
 
@@ -64,10 +63,9 @@ glmer <- function(data, formula, ...) {
 
 #' @export
 glmer.default <- function(data, formula, ...) {
-  glmer.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-glmer.data.frame <- function(data, formula, ...) {
   lme4::glmer(formula = formula, data = data, ...)
 }

@@ -17,11 +17,10 @@ glmnet <- function(data, formula, ...) {
 
 #' @export
 glmnet.default <- function(data, formula, ...) {
-  glmnet.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-glmnet.data.frame <- function(data, formula, ...) {
   dat <- model_as_xy(data, formula)
   object <- glmnet::glmnet(x = dat$x, y = dat$y, ...)
   attr(object, "formula") <- formula
@@ -56,11 +55,10 @@ cv.glmnet <- function(data, formula, ...) {
 
 #' @export
 cv.glmnet.default <- function(data, formula, ...) {
-  cv.glmnet.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-cv.glmnet.data.frame <- function(data, formula, ...) {
   dat <- model_as_xy(data, formula)
   object <- glmnet::cv.glmnet(x = dat$x, y = dat$y, ...)
   attr(object, "formula") <- formula
