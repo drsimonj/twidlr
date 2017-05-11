@@ -10,10 +10,12 @@ factanal(data, formula = ~., ...)
 \method{predict}{factanal}(object, data, ...)
 }
 \arguments{
-\item{data}{Data frame containing the variables in the model}
+\item{data}{Data frame (or object that can be coerced to one) containing the
+variables in the model}
 
-\item{formula}{A \code{\link[stats]{formula}} with no response variable.
-(optional). If omitted, all variables in "data" will be included.}
+\item{formula}{A \code{\link[stats]{formula}} (or object that can be coerced
+to one) with no response variable (optional). If omitted, all variables in
+"data" will be included.}
 
 \item{...}{Additional arguments to pass to model function}
 

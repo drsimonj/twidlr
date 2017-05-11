@@ -4,9 +4,11 @@
 \alias{twidlr_defaults}
 \title{Default parameters used by twidlr functions}
 \arguments{
-\item{data}{Data frame containing the variables in the model}
+\item{data}{Data frame (or object that can be coerced to one) containing the
+variables in the model}
 
-\item{formula}{\code{\link[stats]{formula}} describing the model to be fitted}
+\item{formula}{\code{\link[stats]{formula}} (or object that can be coerced to
+one) describing the model to be fitted}
 
 \item{object}{Fitted model}
 

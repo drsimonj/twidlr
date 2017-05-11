@@ -20,11 +20,10 @@ rpart <- function(data, formula, ...) {
 
 #' @export
 rpart.default <- function(data, formula, ...) {
-  rpart.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-rpart.data.frame <- function(data, formula, ...) {
   rpart::rpart(formula = formula, data = data, ...)
 }
 
