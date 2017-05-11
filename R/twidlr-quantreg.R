@@ -28,11 +28,10 @@ crq <- function(data, formula, ...) {
 
 #' @export
 crq.default <- function(data, formula, ...) {
-  crq.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-crq.data.frame <- function(data, formula, ...) {
   quantreg::crq(formula = formula, data = data, ...)
 }
 
@@ -71,11 +70,10 @@ rq <- function(data, formula, ...) {
 
 #' @export
 rq.default <- function(data, formula, ...) {
-  rq.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-rq.data.frame <- function(data, formula, ...) {
   quantreg::rq(formula = formula, data = data, ...)
 }
 
@@ -116,11 +114,10 @@ nlrq <- function(data, formula, ...) {
 
 #' @export
 nlrq.default <- function(data, formula, ...) {
-  nlrq.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-nlrq.data.frame <- function(data, formula, ...) {
   quantreg::nlrq(formula = formula, data = data, ...)
 }
 

@@ -8,7 +8,21 @@
 #' @usage lhs \%>\% rhs
 NULL
 
+#' Coerce arguments to right object class
+#'
+#' \code{coerce_args} is used to ensure that the data and formula arguments
+#' provided to twidlr model functions are coerced to a data frame and formula
+#' before further processing. This makes it possible for remaining function code
+#' to assume these object classes.
+#'
+#' @param data Object that can be coerced to a data frame
+#' @param formula Object that can be coerced to a formula
+coerce_args <- function(data, formula) {
+  data    <- as.data.frame(data)
+  formula <- stats::as.formula(formula)
 
+  list(data = data, formula = formula)
+}
 
 #' Convert data frame and model \code{\link[stats]{formula}} to input matrix and
 #' output vector list

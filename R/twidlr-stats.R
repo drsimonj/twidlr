@@ -17,13 +17,13 @@ ttest <- function(data, formula, ...) {
 
 #' @export
 ttest.default <- function(data, formula, ...) {
-  ttest.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-ttest.data.frame <- function(data, formula, ...) {
   stats::t.test(formula = formula, data = data, ...)
 }
+
 
 #' data.frame-first formula-second method for \code{\link[stats]{lm}}
 #'
@@ -48,11 +48,10 @@ lm <- function(data, formula, ...) {
 
 #' @export
 lm.default <- function(data, formula, ...) {
-  lm.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-lm.data.frame <- function(data, formula, ...) {
   stats::lm(formula = formula, data = data, ...)
 }
 
@@ -89,11 +88,10 @@ glm <- function(data, formula, ...) {
 
 #' @export
 glm.default <- function(data, formula, ...) {
-  glm.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-glm.data.frame <- function(data, formula, ...) {
   stats::glm(formula = formula, data = data, ...)
 }
 
@@ -113,7 +111,7 @@ predict.glm <- function(object, data, ...) {
 #'
 #' @seealso \code{\link[stats]{kmeans}}
 #'
-#' @inheritParams unsupervvised_twidlr_defaults
+#' @inheritParams unsupervised_twidlr_defaults
 #' @export
 #'
 #' @examples
@@ -143,11 +141,10 @@ kmeans <- function(data, formula = ~., ...) {
 
 #' @export
 kmeans.default <- function(data, formula = ~., ...) {
-  kmeans.data.frame(as.data.frame(data), formula = formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-kmeans.data.frame <- function(data, formula = ~., ...) {
   x <- model_as_xy(data, formula)$x
   object <- stats::kmeans(x = x, ...)
   attr(object, "formula") <- formula
@@ -197,11 +194,10 @@ prcomp <- function(data, formula = ~., ...) {
 
 #' @export
 prcomp.default <- function(data, formula = ~., ...) {
-  prcomp.data.frame(data = as.data.frame(data), formula = formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-prcomp.data.frame <- function(data, formula = ~., ...) {
   object <- stats:::prcomp.formula(formula = formula, data = data, ...)
   attr(object, "formula") <- formula
   object
@@ -238,11 +234,10 @@ aov <- function(data, formula, ...) {
 
 #' @export
 aov.default <- function(data, formula, ...) {
-  aov.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-aov.data.frame <- function(data, formula, ...) {
   stats::aov(formula = formula, data = data, ...)
 }
 
@@ -271,11 +266,10 @@ prcomp <- function(data, formula = ~., ...) {
 
 #' @export
 prcomp.default <- function(data, formula = ~., ...) {
-  prcomp.data.frame(data = as.data.frame(data), formula = formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-prcomp.data.frame <- function(data, formula = ~., ...) {
   object <- stats:::prcomp.formula(formula = formula, data = data, ...)
   attr(object, "formula") <- formula
   object
@@ -313,11 +307,10 @@ factanal <- function(data, formula = ~., ...) {
 
 #' @export
 factanal.default <- function(data, formula = ~., ...) {
-  factanal.data.frame(data = as.data.frame(data), formula = formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-factanal.data.frame <- function(data, formula = ~., ...) {
   object <- stats::factanal(x = formula, data = data, ...)
 
   # To predict via regression method

@@ -18,11 +18,10 @@ xgboost <- function(data, formula, ...) {
 
 #' @export
 xgboost.default <- function(data, formula, ...) {
-  xgboost.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-xgboost.data.frame <- function(data, formula, ...) {
   xy <- model_as_xy(data, formula)
   object <- xgboost::xgboost(data = xy$x, label = xy$y, ...)
   attr(object, "formula") <- formula # For predict

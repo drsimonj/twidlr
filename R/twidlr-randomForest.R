@@ -20,11 +20,10 @@ randomForest <- function(data, formula, ...) {
 
 #' @export
 randomForest.default <- function(data, formula, ...) {
-  randomForest.data.frame(as.data.frame(data), formula, ...)
-}
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
 
-#' @export
-randomForest.data.frame <- function(data, formula, ...) {
   randomForest::randomForest(formula = formula, data = data, ...)
 }
 
