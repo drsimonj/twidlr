@@ -7,5 +7,6 @@
     * `rpart::rpart`
     * `randomForest::randomForest`
     * `lme4::lmer`
-    * `quantreg::rq, nlrq, rqss, crq` (thanks to [Joran Elias](https://github.com/joranE))
     * `lme4::glmer` (thanks to [Mathew Ling](https://github.com/Lingtax/))
+    * `quantreg::rq, nlrq, rqss, crq` (thanks to [Joran Elias](https://github.com/joranE))
+    * `e1071::svm`
