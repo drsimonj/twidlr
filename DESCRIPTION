@@ -20,7 +20,8 @@ Suggests: testthat,
     randomForest,
     lme4,
     quantreg,
-    survival
+    survival,
+    e1071
 Imports: magrittr,
     lazyeval,
     methods
