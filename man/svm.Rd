@@ -2,9 +2,12 @@
 % Please edit documentation in R/twidlr-e1071.R
 \name{svm}
 \alias{svm}
+\alias{predict.svm}
 \title{data.frame-first formula-second method for \code{\link[e1071]{svm}}}
 \usage{
 svm(data, formula = ~., ...)
+
+\method{predict}{svm}(object, data, ...)
 }
 \arguments{
 \item{data}{Data frame (or object that can be coerced to one) containing the
@@ -14,6 +17,8 @@ variables in the model}
 one) describing the model to be fitted}
 
 \item{...}{Additional arguments to pass to model function}
+
+\item{object}{Fitted model}
 }
 \description{
 This function passes a data.frame, formula, and additional arguments to

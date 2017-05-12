@@ -26,4 +26,10 @@ svm.default <- function(data, formula = ~., ...) {
   e1071:::svm.formula(formula = formula, data = data, ...)
 }
 
-
+#' @rdname svm
+#' @export
+#' @export predict.svm
+predict.svm <- function(object, data, ...) {
+  data <- predict_checks(data = data, ...)
+  e1071:::predict.svm(object, newdata = data, ...)
+}
