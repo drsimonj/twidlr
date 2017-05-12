@@ -3,10 +3,10 @@ context("glmnet")
 
 test_that("glmnet", {
   d <- datasets::mtcars
-  x <- model.matrix(hp ~ ., mtcars)[,-1]
-  y <- mtcars$hp
+  x <- model.matrix(hp ~ ., d)[,-1]
+  y <- d$hp
 
-  twidlr_fit <- twidlr::glmnet(mtcars, hp ~ .)
+  twidlr_fit <- twidlr::glmnet(d, hp ~ .)
   origin_fit <- glmnet::glmnet(x, y)
 
   expect_equal(coef(twidlr_fit), coef(origin_fit))
@@ -17,11 +17,11 @@ test_that("glmnet", {
 
 test_that("cv.glmnet", {
   d <- datasets::mtcars
-  x <- model.matrix(hp ~ .*., mtcars)[,-1]
-  y <- mtcars$hp
+  x <- model.matrix(hp ~ .*., d)[,-1]
+  y <- d$hp
 
   set.seed(170504)
-  twidlr_fit <- twidlr::cv.glmnet(mtcars, hp ~ .*.)
+  twidlr_fit <- twidlr::cv.glmnet(d, hp ~ .*.)
   set.seed(170504)
   origin_fit <- glmnet::cv.glmnet(x, y)
 
