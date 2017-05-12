@@ -53,7 +53,7 @@ Model functions exposed by twidlr:
 
 | Package      | Functions                                                    |
 |:-------------|:-------------------------------------------------------------|
-| e1071        | svm                                                          |
+| e1071        | naiveBayes, svm                                              |
 | glmnet       | cv.glmnet, glmnet                                            |
 | lme4         | glmer, lmer                                                  |
 | quantreg     | crq, nlrq, rq, rqss                                          |
