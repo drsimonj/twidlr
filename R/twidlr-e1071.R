@@ -62,14 +62,15 @@ naiveBayes <- function(data, formula, ...) {
 }
 
 #' @export
-naiveBayes.default <- function(formula, data, ...) {
-  naiveBayes.data.frame(as.data.frame(data), formula, ...)
+naiveBayes.default <- function(data, formula = ~., ...) {
+  
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
+  
+  e1071:::naiveBayes.formula(formula = formula, data = data, ...)
 }
 
-#' @export
-naiveBayes.data.frame <- function(data, formula, ...) {
-  e1071::naiveBayes(formula = formula, data = data, ...)
-}
 
 #' @rdname naiveBayes
 #' @export
