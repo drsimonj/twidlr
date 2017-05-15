@@ -81,7 +81,8 @@ x <- data.frame(rbind(
   c("glmnet", "cv.glmnet"),
   c("stats", "factanal"),
   c("e1071", "svm"),
-  c("e1071", "naiveBayes")
+  c("e1071", "naiveBayes"),
+  c("gamlss","gamlss")
   
   ## < ---------------------------------------------------------------
 ))
