@@ -33,3 +33,49 @@ predict.svm <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   e1071:::predict.svm(object, newdata = data, ...)
 }
+
+
+#' data.frame-first formula-second method for \code{\link[e1071]{naiveBayes}}
+#'
+#' This function passes a data.frame, formula, and additional arguments to
+#' \code{\link[e1071]{naiveBayes}}.
+#'
+#' @seealso \code{\link[e1071]{naiveBayes}}
+#'
+#' @inheritParams twidlr_defaults
+#' @export
+#'
+#' @examples
+#'
+#' data <- mtcars
+#' data$cyl_gr_6 <- ifelse(data$cyl > 6, 1, 0)
+#'
+#' fit <- naiveBayes(data, cyl_gr_6 ~ .)
+#' summary(fit)
+#'
+#' # Help page for function being twiddled
+#' ?e1071::naiveBayes
+#'
+naiveBayes <- function(data, formula, ...) {
+  check_pkg("e1071")
+  UseMethod("naiveBayes")
+}
+
+#' @export
+naiveBayes.default <- function(data, formula = ~., ...) {
+  
+  key_args <- coerce_args(data, formula)
+  data     <- key_args$data
+  formula  <- key_args$formula
+  
+  e1071:::naiveBayes.formula(formula = formula, data = data, ...)
+}
+
+
+#' @rdname naiveBayes
+#' @export
+#' @export predict.naiveBayes
+predict.naiveBayes <- function(object, data, ...) {
+  data <- predict_checks(data = data, ...)
+  e1071:::predict.naiveBayes(object, newdata = data, ...)
+}
