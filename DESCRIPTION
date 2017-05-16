@@ -21,7 +21,8 @@ Suggests: testthat,
     lme4,
     quantreg,
     survival,
-    e1071
+    e1071,
+    gamlss
 Imports: magrittr,
     lazyeval,
     methods
