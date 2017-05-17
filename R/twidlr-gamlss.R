@@ -16,8 +16,7 @@
 #' summary(fit)
 #' predict(fit, mtcars[1:5,])
 #'
-#' # Help page for function being twiddled
-#' ?gamlss::gamlss
+
 gamlss <- function(data, formula, ...) {
   check_pkg("gamlss")
   UseMethod("gamlss")
@@ -25,18 +24,25 @@ gamlss <- function(data, formula, ...) {
 
 #' @export
 gamlss.default <- function(data, formula, ...) {
+
   key_args <- coerce_args(data, formula)
   data     <- key_args$data
   formula  <- key_args$formula
-  
-  gamlss::gamlss(formula = formula, data = data, ...)
+
+  fit = gamlss::gamlss(formula = formula, data = data, ...)
+
+  fit$data = data
+
+  return(fit)
 }
 
 #' @rdname gamlss
 #' @export
 #' @export predict.gamlss
 predict.gamlss <- function(object, data, ...) {
+
   data <- predict_checks(data = data, ...)
-  gamlss:::predict.gamlss(object, newdata = data, ...)
+
+  gamlss:::predict.gamlss(object, newdata = data, data = object$data, ...)
 }
 
