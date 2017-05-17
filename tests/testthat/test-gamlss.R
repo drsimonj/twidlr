@@ -10,6 +10,6 @@ test_that("gamlss", {
 
   expect_equal(coef(twidlr_fit), coef(origin_fit))
   expect_error(predict(twidlr_fit))
-  expect_equal(predict(twidlr_fit, data = d), gamlss:::predict.gamlss(origin_fit, newdata = d))
+  expect_equal(predict(twidlr_fit, data = d), gamlss:::predict.gamlss(origin_fit, newdata = d, data = d))
 })
 
