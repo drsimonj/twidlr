@@ -12,9 +12,9 @@
 #' @export
 #'
 #' @examples
-#' fit <- gamlss(mtcars, vs ~ hp + wt, family = BI())
+#' fit <- gamlss(mtcars, vs ~ hp + wt, family = "BI")
 #' summary(fit)
-#' predict(fit, mtcars[1:5,])
+#' predict(fit, mtcars)
 #'
 
 gamlss <- function(data, formula, ...) {
@@ -29,9 +29,11 @@ gamlss.default <- function(data, formula, ...) {
   data     <- key_args$data
   formula  <- key_args$formula
 
-  fit = gamlss::gamlss(formula = formula, data = data, ...)
+  original_data <- data[, all.vars(formula)]
 
-  fit$data = data
+  fit = gamlss::gamlss(formula = formula, data = original_data, ...)
+
+  attr(fit, "original_data") <- original_data
 
   return(fit)
 }
@@ -43,6 +45,10 @@ predict.gamlss <- function(object, data, ...) {
 
   data <- predict_checks(data = data, ...)
 
-  gamlss:::predict.gamlss(object, newdata = data, data = object$data, ...)
+  original_data = attr(object, "original_data")
+
+  adapted_data = data[, names(data) %in% names(original_data) ]
+
+  gamlss:::predict.gamlss(object, newdata = adapted_data, data = original_data, ...)
 }
 
