@@ -6,6 +6,12 @@
 #' This function passes a data.frame, formula, and additional arguments to
 #' \code{\link[gamlss]{gamlss}}.
 #'
+#'This function attaches the training data to the generated model,
+#'because the default gamlss.predict() function requires access to
+#'the original data in order to make predictions. Please be aware
+#'that memory issues can arise when working with large data sets and
+#'or when generating a large number of models.
+#'
 #' @seealso \code{\link[gamlss]{gamlss}}
 #'
 #' @inheritParams twidlr_defaults
