@@ -11,3 +11,4 @@
     * `quantreg::rq, nlrq, rqss, crq` (thanks to [Joran Elias](https://github.com/joranE))
     * `e1071::svm`
     * `e1071::naiveBayes` (thanks to [Bjoern Oettinghaus](https://github.com/erblast))
+    * `gamlss::gamlss` (thanks to [Bjoern Oettinghaus](https://github.com/erblast))
