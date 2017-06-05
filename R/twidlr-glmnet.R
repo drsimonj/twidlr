@@ -29,6 +29,7 @@ glmnet.default <- function(data, formula, ...) {
 
 #' @rdname glmnet
 #' @export
+#' @export predict.glmnet
 predict.glmnet <- function(object, data, ...) {
   data <- predict_checks(data = data, ...)
   data <- model_as_xy(data, attr(object, "formula"))$x
