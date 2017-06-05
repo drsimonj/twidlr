@@ -20,3 +20,4 @@ to one) with no response variable (optional). If omitted, all variables in
 Default parameters used by twidlr functions that do not specify an outcome
 variable (typically an unsupervised model)
 }
+

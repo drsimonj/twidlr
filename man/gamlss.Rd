@@ -38,3 +38,4 @@ predict(fit, mtcars)
 \seealso{
 \code{\link[gamlss]{gamlss}}
 }
+

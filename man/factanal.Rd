@@ -34,3 +34,4 @@ predict(fit, mtcars[1:5, ])
 \seealso{
 \code{\link[stats]{factanal}}
 }
+

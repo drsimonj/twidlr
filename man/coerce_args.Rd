@@ -17,3 +17,4 @@ provided to twidlr model functions are coerced to a data frame and formula
 before further processing. This makes it possible for remaining function code
 to assume these object classes.
 }
+

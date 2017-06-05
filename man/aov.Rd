@@ -27,3 +27,4 @@ predict(fit, mtcars)
 \seealso{
 \code{\link[stats]{aov}}
 }
+

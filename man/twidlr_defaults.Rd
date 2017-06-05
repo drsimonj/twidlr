@@ -17,3 +17,4 @@ one) describing the model to be fitted}
 \description{
 Default parameters used by twidlr functions
 }
+

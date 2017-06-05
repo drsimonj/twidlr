@@ -34,3 +34,4 @@ summary(fit)
 \seealso{
 \code{\link[stats]{lm}}
 }
+

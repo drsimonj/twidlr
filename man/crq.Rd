@@ -41,3 +41,4 @@ f2 <- crq(dat,survival::Surv(pmax(y,c), d, type = "left") ~ x,method = "Portnoy"
 \seealso{
 \code{\link[quantreg]{crq}}
 }
+

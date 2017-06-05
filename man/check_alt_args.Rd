@@ -28,3 +28,4 @@ check_alt_args(b = 10, target = "a", alts = c("b"))
 check_alt_args(b = 10, target = "a", alts = c("b"), stop = FALSE)
 }
 }
+

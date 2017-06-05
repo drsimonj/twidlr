@@ -39,3 +39,4 @@ summary(fit)
 \seealso{
 \code{\link[quantreg]{nlrq}}
 }
+

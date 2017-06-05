@@ -25,3 +25,4 @@ ttest(iris[1:100,], Petal.Width ~ Species)
 \seealso{
 \code{\link[stats]{t.test}}
 }
+

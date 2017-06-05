@@ -3,8 +3,6 @@
 \name{prcomp}
 \alias{prcomp}
 \alias{predict.prcomp}
-\alias{prcomp}
-\alias{predict.prcomp}
 \title{data.frame-first formula-second method for \code{\link[stats]{prcomp}}}
 \usage{
 prcomp(data, formula = ~., ...)
@@ -48,3 +46,4 @@ predict(fit, mtcars[1:5,])
 
 \code{\link[stats]{prcomp}}
 }
+

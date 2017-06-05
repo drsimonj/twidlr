@@ -30,3 +30,4 @@ glmnet(mtcars, hp ~ .)
 \seealso{
 \code{\link[glmnet]{glmnet}}
 }
+

@@ -49,3 +49,4 @@ plot(d, col = predict(fit, d))
 \seealso{
 \code{\link[stats]{kmeans}}
 }
+

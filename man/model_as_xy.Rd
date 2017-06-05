@@ -34,3 +34,4 @@ model_as_xy(mtcars, ~ .)
 \seealso{
 \code{\link[stats]{formula}} \code{\link[stats]{model.matrix}}
 }
+

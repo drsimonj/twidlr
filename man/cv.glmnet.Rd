@@ -31,3 +31,4 @@ predict(fit, mtcars, s = "lambda.min")
 \seealso{
 \code{\link[glmnet]{cv.glmnet}}
 }
+

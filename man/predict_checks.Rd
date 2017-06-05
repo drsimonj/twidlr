@@ -16,3 +16,4 @@ predict_checks(data, ...)
 Run checks for twidlr predict functions and invisibly return 'data' coerced
 to a data frame
 }
+
