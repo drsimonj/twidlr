@@ -18,8 +18,19 @@ NULL
 #' @param data Object that can be coerced to a data frame
 #' @param formula Object that can be coerced to a formula
 coerce_args <- function(data, formula) {
-  data    <- as.data.frame(data)
-  formula <- stats::as.formula(formula)
+  tryCatch(
+    data <- as.data.frame(data),
+    error = function(e) {
+      stop("twidlr model function requires `data` to be a data.frame or object able to be coerced to one.")
+    }
+  )
+
+  tryCatch(
+    formula <- stats::as.formula(formula),
+    error = function(e) {
+      stop("twidlr model function requires `formula` to be a formula or object able to be coerced to one.")
+    }
+  )
 
   list(data = data, formula = formula)
 }

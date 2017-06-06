@@ -14,7 +14,9 @@ svm(data, formula = ~., ...)
 variables in the model}
 
 \item{formula}{\code{\link[stats]{formula}} (or object that can be coerced to
-one) describing the model to be fitted}
+one) describing the model to be fitted. If one-sided, density-estimation is
+carried out. If omitted, density-estimation is done on all variables in
+`data`.}
 
 \item{...}{Additional arguments to pass to model function}
 

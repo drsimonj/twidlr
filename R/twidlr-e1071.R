@@ -6,12 +6,11 @@
 #' @seealso \code{\link[e1071]{svm}}
 #'
 #' @inheritParams twidlr_defaults
-#' @formula \code{\link[stats]{formula}} (or object that can be coerced to one)
-#'   describing the model to be fitted. If one-sided, density-estimation is
+#' @param formula \code{\link[stats]{formula}} (or object that can be coerced to
+#'   one) describing the model to be fitted. If one-sided, density-estimation is
 #'   carried out. If omitted, density-estimation is done on all variables in
 #'   `data`.
 #' @export
-#'
 svm <- function(data, formula = ~., ...) {
   check_pkg("e1071")
   UseMethod("svm")
@@ -63,11 +62,11 @@ naiveBayes <- function(data, formula, ...) {
 
 #' @export
 naiveBayes.default <- function(data, formula = ~., ...) {
-  
+
   key_args <- coerce_args(data, formula)
   data     <- key_args$data
   formula  <- key_args$formula
-  
+
   e1071:::naiveBayes.formula(formula = formula, data = data, ...)
 }
 
